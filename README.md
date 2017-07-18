@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+![Build Status](https://codeship.com/projects/ec276130-4de1-0135-1fe3-72fd8360efb5/status?branch=master)
+![Code Climate](https://codeclimate.com/github/seanwbrooks/twikr_using_webpacker.png)
+![Coverage Status](https://coveralls.io/repos/seanwbrooks/twikr_using_webpacker/badge.png)
