@@ -1,6 +1,9 @@
 {
   "name": "stock_app",
   "private": true,
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
   "dependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.25.0",
@@ -31,7 +34,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.3.0",
-    "webpack-manifest-plugin": "^1.1.2",
+    "webpack-manifest-plugin": "^1.2.1",
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
