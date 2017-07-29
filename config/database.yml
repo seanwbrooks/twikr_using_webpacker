@@ -83,4 +83,4 @@ production:
   database: stock_app_production
   username: stock_app
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  url: <%= ENV['postgres://mnustvysmeuosq:178ec832775f490cb1f9f077ade4e71e6223ff9e3045b5466fb174ca0ce5650e@ec2-23-23-86-179.compute-1.amazonaws.com:5432/d255fkn68or44v'] %>
+  
