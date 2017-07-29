@@ -1,1 +1,1 @@
-web: bundle exec puma -C config/webpack/puma.rb
+web: bundle exec puma -C config/puma.rb
