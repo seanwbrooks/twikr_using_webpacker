@@ -5,6 +5,8 @@ class CreateTweets < ActiveRecord::Migration[5.1]
       t.string :stock, null: false
       t.string :body, null: false
       t.integer :rating, null: false, default: 0
+
+      t.timestamp null: false
     end
   end
 end

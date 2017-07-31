@@ -4,7 +4,7 @@ class CreatePortfolios < ActiveRecord::Migration[5.1]
       t.integer :user_id, null: false
       t.integer :stock_id, null: false
 
-      t.timestamps, null: false
+      t.timestamps null: false
     end
   end
 end
