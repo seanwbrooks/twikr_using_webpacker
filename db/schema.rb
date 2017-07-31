@@ -10,10 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724122344) do
+ActiveRecord::Schema.define(version: 20170731175552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "stock_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "symbol", null: false
+    t.string "ask"
+    t.string "percent_change"
+    t.string "market_capitalization"
+    t.string "average_daily_volume"
+    t.string "dividend_share"
+    t.string "earning_share"
+    t.string "eps_estimate_current_year"
+    t.string "eps_estimate_next_year"
+    t.string "eps_estimate_next_quarter"
+    t.string "days_low"
+    t.string "days_high"
+    t.string "year_low"
+    t.string "year_high"
+    t.string "change_from_year_low"
+    t.string "percent_change_from_year_low"
+    t.string "change_from_year_high"
+    t.string "percent_change_from_year_high"
+    t.string "days_range"
+    t.string "fiftyday_moving_average"
+    t.string "two_hundredday_moving_average"
+    t.string "change_from_fiftyday_moving_average"
+    t.string "percent_change_from_fiftyday_moving_average"
+    t.string "pe_ratio"
+    t.string "peg_ratio"
+    t.string "price_eps_estimate_current_year"
+    t.string "price_eps_estimate_next_year"
+    t.string "shares_owned"
+    t.string "short_ratio"
+    t.string "volume"
+    t.string "year_range"
+    t.string "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "stock", null: false
+    t.string "body", null: false
+    t.integer "rating", default: 0, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
