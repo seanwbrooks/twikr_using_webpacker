@@ -9,6 +9,7 @@ class CreateStocks < ActiveRecord::Migration[5.1]
       t.string :peg_ratio
       t.string :volume
       t.string :rating
+      t.integer :tweet_id
 
       t.timestamps null: false
     end

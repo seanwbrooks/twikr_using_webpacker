@@ -37,13 +37,14 @@ ActiveRecord::Schema.define(version: 20170731191644) do
     t.string "peg_ratio"
     t.string "volume"
     t.string "rating"
+    t.integer "tweet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tweets", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "stock", null: false
+    t.string "ticker", null: false
     t.string "body", null: false
     t.integer "rating", default: 0, null: false
   end
