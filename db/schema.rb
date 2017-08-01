@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724122344) do
+ActiveRecord::Schema.define(version: 20170731191644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "stock_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "tweet_id", null: false
+    t.integer "user_id", null: false
+    t.string "comment", null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "symbol", null: false
+    t.string "ask"
+    t.string "percent_change"
+    t.string "market_capitalization"
+    t.string "fiftyday_moving_average"
+    t.string "peg_ratio"
+    t.string "volume"
+    t.string "rating"
+    t.integer "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "ticker", null: false
+    t.string "body", null: false
+    t.integer "rating", default: 0, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
