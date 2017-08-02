@@ -1,10 +1,13 @@
 class CreateTweets < ActiveRecord::Migration[5.1]
   def change
     create_table :tweets do |t|
-      t.integer :user_id, null: false
       t.string :ticker, null: false
+      t.string :ask, null: false
+      t.string :percent_change, null: false
+      t.string :market_capitalization, null: false
+      t.string :rating, null: false
       t.string :body, null: false
-      t.integer :rating, null: false, default: 0
+      t.belongs_to :user, null: false
 
       t.timestamp null: false
     end
