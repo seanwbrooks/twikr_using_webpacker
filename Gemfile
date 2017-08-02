@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'webpacker', '~> 2.0'
 gem 'devise'
 gem 'simple_form'
+gem 'active_model_serializers'
+gem 'stock_quote'
 
 group :development do
   gem 'listen', '~> 3.0.5'

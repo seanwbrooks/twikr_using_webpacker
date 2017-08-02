@@ -1,12 +1,15 @@
-import React,{ Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
+import TweetFormContainer from './TweetFormContainer';
+import TweetTile from '../components/TweetTile';
 
-class TweetsIndexContainer extends Component {
+class TweetsIndexContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       tweets: []
     }
+    this.addNewTweet = this.addNewTweet.bind(this);
   }
 
   componentDidMount() {
@@ -17,10 +20,40 @@ class TweetsIndexContainer extends Component {
     });
   }
 
+  addNewTweet(formPayload){
+    fetch('/tweets', {
+      method: 'POST',
+      body: JSON.stringify(formPayload)
+    })
+    .then((response) => response.json())
+    .then((body) => {
+      this.setState({ tweets: [...this.state.tweets, body ]})
+    })
+  }
+
   render() {
+
+    let tweets = this.state.tweets.map((tweet) => {
+      return(
+        <TweetTile
+          key={tweet.id}
+          id={tweet.id}
+          symbol={tweet.symbol}
+          ask={tweet.ask}
+          percent_change={tweet.percent_change}
+          market_capitalization={tweet.market_capitalization}
+          rating={tweet.rating}
+          body={tweet.body}
+        />
+      );
+    });
+
     return(
       <div>
-        <h1>Hello from TweetsIndexContainer</h1>
+        <TweetFormContainer
+          addNewTweet={this.addNewTweet}
+        />
+        {tweets}
       </div>
     );
   }

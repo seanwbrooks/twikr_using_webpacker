@@ -1,7 +1,7 @@
-import React,{ Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 
-class TweetsShowContainer extends Component {
+class TweetShowContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,7 +10,7 @@ class TweetsShowContainer extends Component {
   }
 
   componentDidMount() {
-    let tweetId = this.props.tweetId
+    let tweetId = this.props.tweetId;
     fetch(`/api/v1/tweets${tweetId}`)
     .then((response) => response.json())
     .then((body) => {
@@ -27,4 +27,4 @@ class TweetsShowContainer extends Component {
   }
 }
 
-export default TweetsIndexContainer;
+export default TweetShowContainer;
