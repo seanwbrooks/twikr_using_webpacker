@@ -2,7 +2,5 @@ class Review < ApplicationRecord
   belongs_to :tweet
   belongs_to :user
 
-  validates :tweet_id, presence: true
-  validates :user_id, presence: true
-  validates :comment, presence: true, length: { minimum: 1, maximum: 140 }
+  validates :comment, presence: true, length: { minimum: 4, maximum: 200 }
 end
