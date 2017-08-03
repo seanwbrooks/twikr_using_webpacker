@@ -9,7 +9,6 @@ class TweetFormContainer extends React.Component {
       ticker: '',
       body: ''
     }
-
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
@@ -40,8 +39,8 @@ class TweetFormContainer extends React.Component {
   }
 
   render() {
-
     return (
+      <div className="card">
         <form onSubmit={this.handleFormSubmit}>
           <TextField
             content={this.state.ticker}
@@ -55,9 +54,10 @@ class TweetFormContainer extends React.Component {
             name="body"
             handleChange={this.handleChange}
           />
-          <input className="btn waves-effect waves-light blue" type="submit" name="submit" value="Submit" />
+          <input className="btn waves-effect waves-light blue" type="submit" name="submit" value="Submit" onClick={this.props.handleFormSubmit} />
           <button className="btn waves-effect waves-light blue" onClick={this.handleClearForm}>Clear</button>
         </form>
+      </div>
     )
   }
 }

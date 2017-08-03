@@ -38,12 +38,14 @@ class TweetsIndexContainer extends React.Component {
           <TweetTile
             id={tweet.id}
             key={tweet.id}
+            username={tweet.user.username}
             ticker={tweet.ticker}
             ask={tweet.ask}
             percent_change={tweet.percent_change}
             market_capitalization={tweet.market_capitalization}
             rating={tweet.rating}
             body={tweet.body}
+            reviews={tweet.reviews}
           />
         </div>
       )

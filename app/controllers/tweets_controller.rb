@@ -7,6 +7,7 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
+    @reviews = @tweet.reviews
   end
 
   def new

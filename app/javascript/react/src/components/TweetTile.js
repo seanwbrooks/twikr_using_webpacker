@@ -3,8 +3,11 @@ import { Link } from 'react-router';
 
 const TweetTile = (props) => {
   return(
-      <div className="row" id={props.id}>
-        <div className="center-align">
+      <div className="card" id={props.id}>
+        <div className="row">
+          <p>@{props.username}</p>
+        </div>
+        <div className="row">
           <Link to={`/tweets/${props.id}`}>
             <div className="col s4">{props.ticker}</div>
           </Link>

@@ -6,12 +6,14 @@ feature 'user signs up' do
     visit root_path
     click_link 'Sign Up'
 
-    fill_in 'First Name', with: 'Jon'
+    fill_in 'user_first_name', with: 'Jon'
     fill_in 'Last Name', with: 'Smith'
+    fill_in 'Username', with: 'johnsmith'
     fill_in 'Email', with: 'user@example.com'
     fill_in 'user_password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'
     click_button 'Sign Up'
+    save_and_open_page
 
     expect(page).to have_content("You're in!")
     expect(page).to have_content("Sign Out")
