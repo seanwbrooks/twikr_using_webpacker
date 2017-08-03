@@ -55,8 +55,8 @@ class TweetFormContainer extends React.Component {
             name="body"
             handleChange={this.handleChange}
           />
-          <button className="btn waves-effect waves-light blue" onClick={this.handleClearForm}>Clear</button>
           <input className="btn waves-effect waves-light blue" type="submit" name="submit" value="Submit" />
+          <button className="btn waves-effect waves-light blue" onClick={this.handleClearForm}>Clear</button>
         </form>
     )
   }

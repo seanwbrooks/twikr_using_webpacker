@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @tweets = Tweet.all
   end
@@ -16,12 +18,8 @@ class TweetsController < ApplicationController
     @stock = StockQuote::Stock.json_quote(json["ticker"])
   end
 
-  def update
-  end
-
-  def edit
-  end
-
   def destroy
+    @tweet = Tweet.find(params[:tweet_id])
+    @tweet.destroy
   end
 end
