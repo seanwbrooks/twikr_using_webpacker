@@ -4,6 +4,7 @@ class Api::V1::TweetsController < ApplicationController
   end
 
   def show
+    binding.pry
     @tweet = Tweet.find(params[:id])
 
     render json: @tweet, adapter: :json

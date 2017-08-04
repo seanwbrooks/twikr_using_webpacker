@@ -40,7 +40,7 @@ class TweetFormContainer extends React.Component {
 
   render() {
     return (
-      <div className="card">
+      <div className="row tweet-form">
         <form onSubmit={this.handleFormSubmit}>
           <TextField
             content={this.state.ticker}
