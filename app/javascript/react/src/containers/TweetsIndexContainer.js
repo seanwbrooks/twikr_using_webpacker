@@ -21,13 +21,15 @@ class TweetsIndexContainer extends React.Component {
   }
 
   addNewTweet(formPayload){
-    fetch('/tweets', {
+    fetch('/api/v1/tweets', {
       method: 'POST',
+      credentials: 'same-origin',
       body: JSON.stringify(formPayload)
     })
     .then((response) => response.json())
     .then((body) => {
-      this.setState({ tweets: [...this.state.tweets, body ]})
+      debugger;
+      this.setState({ tweets: [...this.state.tweets, body.tweet ]})
     })
   }
 
@@ -48,7 +50,7 @@ class TweetsIndexContainer extends React.Component {
             reviews={tweet.reviews}
           />
         </div>
-      )
+      );
     });
 
     return(

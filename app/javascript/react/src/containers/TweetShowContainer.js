@@ -11,11 +11,11 @@ class TweetShowContainer extends React.Component {
   }
 
   componentDidMount() {
-    let tweetId = this.props.tweetId;
+    let tweetId = this.props.params.id;
     fetch(`/api/v1/tweets/${tweetId}`)
     .then((response) => response.json())
     .then((body) => {
-      this.setState({ tweet: body })
+      this.setState({ tweet: body.tweet, reviews: body.tweet.reviews })
     });
   }
 
