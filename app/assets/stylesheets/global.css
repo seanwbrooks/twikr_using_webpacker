@@ -9,3 +9,12 @@
 .cancel-form {
   margin: 0rem 2rem;
 }
+
+body {
+  background-size: cover;
+  background-image: url("http://chieforganizer.org/wp-content/uploads/2016/02/Wall-Street-Lower-Manhattan-53049.jpg");
+}
+
+.tweet-form {
+
+}

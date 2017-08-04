@@ -16,43 +16,50 @@ class TweetsIndexContainer extends React.Component {
     fetch('/api/v1/tweets')
     .then((response) => response.json())
     .then((body) => {
-      this.setState({ tweets: body })
+      this.setState({ tweets: body.tweets })
     });
   }
 
   addNewTweet(formPayload){
-    fetch('/tweets', {
+    fetch('/api/v1/tweets', {
       method: 'POST',
+      credentials: 'same-origin',
       body: JSON.stringify(formPayload)
     })
     .then((response) => response.json())
     .then((body) => {
-      this.setState({ tweets: [...this.state.tweets, body ]})
+      debugger;
+      this.setState({ tweets: [...this.state.tweets, body.tweet ]})
     })
   }
 
   render() {
-
     let tweets = this.state.tweets.map((tweet) => {
       return(
-        <TweetTile
-          key={tweet.id}
-          id={tweet.id}
-          symbol={tweet.symbol}
-          ask={tweet.ask}
-          percent_change={tweet.percent_change}
-          market_capitalization={tweet.market_capitalization}
-          rating={tweet.rating}
-          body={tweet.body}
-        />
+        <div className="container z-depth-3 hoverable">
+          <TweetTile
+            id={tweet.id}
+            key={tweet.id}
+            username={tweet.user.username}
+            ticker={tweet.ticker}
+            ask={tweet.ask}
+            percent_change={tweet.percent_change}
+            market_capitalization={tweet.market_capitalization}
+            rating={tweet.rating}
+            body={tweet.body}
+            reviews={tweet.reviews}
+          />
+        </div>
       );
     });
 
     return(
       <div>
-        <TweetFormContainer
-          addNewTweet={this.addNewTweet}
-        />
+        <div className="container">
+          <TweetFormContainer
+            addNewTweet={this.addNewTweet}
+          />
+        </div>
         {tweets}
       </div>
     );
