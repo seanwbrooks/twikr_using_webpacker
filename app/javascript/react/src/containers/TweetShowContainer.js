@@ -1,4 +1,5 @@
 import React from 'react';
+import Foundation from 'react-foundation';
 import { Link } from 'react-router';
 
 class TweetShowContainer extends React.Component {
