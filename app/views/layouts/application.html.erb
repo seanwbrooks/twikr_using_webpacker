@@ -1,34 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>TWIKR</title>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
-    <%= javascript_include_tag 'application' %>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
     <%= javascript_pack_tag 'index.js' %>
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <nav class="blue" role="navigation">
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo">TWIKR</a>
-        <ul id="nav-mobile" class="right">
-          <% if user_signed_in? %>
-            <li><%= link_to "Welcome #{current_user.username}!", root_path %></li>
-            <% unless current_user.profile_photo.file.nil? %>
-            <li class="profile-photo"><%= image_tag current_user.profile_photo.url, { size: "45x45" } %></li>
-            <% end %>
-            <li><%= link_to 'Edit Profile', edit_user_registration_path %>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-        <% end %>
-      </div>
-    </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+      <nav class="top-bar" data-topbar role="navigation">
+         <ul class="title-area">
+           <li class="name">
+             <h1><%= link_to "TWIKR", root_path %></h1>
+           </li>
+         </ul>
+
+         <section class="top-bar-section">
+           <!-- Right Nav Section -->
+           <ul class="right">
+             <% if user_signed_in? %>
+               <li><%= link_to "Welcome #{current_user.username}!", root_path %></li>
+               <% unless current_user.profile_photo.file.nil? %>
+                  <li id="profile-photo"><%= image_tag current_user.profile_photo.url, { size: "45x45" } %></li>
+               <% end %>
+               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+             <% else %>
+               <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+               <li><%= link_to 'Sign In', new_user_session_path %></li>
+             <% end %>
+           </ul>
+         </section>
+       </nav>
+
+       <div class="flash-notices">
+         <% flash.each do |type, message| %>
+           <div class="flash-<%= type %>">
+             <%= message %>
+           </div>
+         <% end %>
+       </div>
+
+   <div class="row">
+     <div class="small-12 columns">
+       <%= yield %>
+     </div>
+   </div>
   </body>
 </html>

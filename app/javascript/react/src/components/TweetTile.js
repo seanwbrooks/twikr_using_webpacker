@@ -3,18 +3,18 @@ import { Link } from 'react-router';
 
 const TweetTile = (props) => {
   return(
-    <div className="row">
+    <div className="callout secondary">
       <div className="row">
-        <Link to={`/tweets/${props.id}`}>
-          <div className="col s4">{props.ticker}</div>
-        </Link>
-        <div className="col s2">{props.ask}</div>
-        <div className="col s2">{props.percent_change}</div>
-        <div className="col s2">{props.market_capitalization}</div>
-        <div className="col s2">{props.rating}</div>
+        <h3>@{props.username}</h3>
       </div>
       <div className="row">
-        <p>@{props.username}</p>
+        <Link to={`/tweets/${props.id}`}>
+          <div className="small-4 columns">{props.ticker}</div>
+        </Link>
+        <div className="columns">{props.ask}</div>
+        <div className="columns">{props.percent_change}</div>
+        <div className="columns">{props.market_capitalization}</div>
+        <div className="columns">{props.rating}</div>
       </div>
       <div className="row">
         <div>{props.body}</div>

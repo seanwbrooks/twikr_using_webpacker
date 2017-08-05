@@ -36,7 +36,7 @@ class TweetsIndexContainer extends React.Component {
   render() {
     let tweets = this.state.tweets.map((tweet) => {
       return(
-        <div className="container z-depth-3 hoverable">
+        <div className="row">
           <TweetTile
             id={tweet.id}
             key={tweet.id}
@@ -55,12 +55,14 @@ class TweetsIndexContainer extends React.Component {
 
     return(
       <div>
-        <div className="container">
+        <div className="row">
           <TweetFormContainer
             addNewTweet={this.addNewTweet}
           />
         </div>
-        {tweets}
+        <div className="row">
+          {tweets}
+        </div>
       </div>
     );
   }
