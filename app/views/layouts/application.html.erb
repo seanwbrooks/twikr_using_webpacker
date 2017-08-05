@@ -15,11 +15,12 @@
         <a href="/" class="brand-logo">TWIKR</a>
         <ul id="nav-mobile" class="right">
           <% if user_signed_in? %>
-            <li><%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
+            <li><%= link_to "Welcome #{current_user.username}!", root_path %></li>
+            <% unless current_user.profile_photo.file.nil? %>
+            <li class="profile-photo"><%= image_tag current_user.profile_photo.url, { size: "45x45" } %></li>
+            <% end %>
+            <li><%= link_to 'Edit Profile', edit_user_registration_path %>
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-              <% if current_user.admin? %>
-                <li><%= link_to "Admin Section", admin_path %></li>
-              <% end %>
           <% else %>
             <li><%= link_to 'Sign In', new_user_session_path %></li>
             <li><%= link_to 'Sign Up', new_user_registration_path %></li>
