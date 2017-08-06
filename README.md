@@ -1,7 +1,7 @@
 **TWIKR**
 ![Code Climate](https://codeclimate.com/github/seanwbrooks/twikr_using_webpacker.png)
 
-TWIKR is an application for market data. The application uses a React on Rails framework.
+TWIKR is a financial communication platform for user to share their ideas and follow stocks. The application uses a React on Rails framework.
 
 **TECHNOLOGIES:**
 React is a great front-end technology that makes websites dynamic and increases user experiences by cutting down page reloads with a virtual DOM.

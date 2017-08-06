@@ -12,8 +12,11 @@ class Api::V1::TweetsController < ApplicationController
   end
 
   def create
-    json = JSON.parse(request.body.read)
-    @stock = StockQuote::Stock.json_quote(json["ticker"])
+    unless current_user
+      return render json: { errors: 'Must sign in'}, status: 403
+    end
+    data = JSON.parse(request.body.read)
+    @stock = StockQuote::Stock.json_quote(data["ticker"])
     @pegratio = @stock["quote"]["PEGRatio"].to_f
     @ask = @stock["quote"]["Ask"].to_f
     @fiftyday = @stock["quote"]["FiftydayMovingAverage"].to_f
@@ -22,16 +25,19 @@ class Api::V1::TweetsController < ApplicationController
     if @buy < 1
       @position = "Buy"
     end
-    new_tweet = Tweet.create(
+    @new_tweet = Tweet.new(
       ticker: @stock["quote"]["symbol"],
       ask: @stock["quote"]["Ask"],
       percent_change: @stock["quote"]["PercentChange"],
       market_capitalization: @stock["quote"]["MarketCapitalization"],
       rating: @position,
-      body: json["body"],
-      user_id: current_user.id
-    )
-    binding.pry
-    render json: new_tweet, adapter: :json
+      body: data["body"],
+      user_id: current_user.id)
+      binding.pry
+    if @new_tweet.save
+      return render json: @new_tweet, adapter: :json
+    else
+      return render json: {}, adapter: :json
+    end
   end
 end

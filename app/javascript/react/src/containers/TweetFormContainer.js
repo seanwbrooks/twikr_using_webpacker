@@ -41,7 +41,7 @@ class TweetFormContainer extends React.Component {
   render() {
     return (
       <div className="callout secondary">
-        <form>
+        <form onSubmit={this.handleFormSubmit}>
           <div className="row">
             <TextField
               content={this.state.ticker}
@@ -59,7 +59,7 @@ class TweetFormContainer extends React.Component {
             />
           </div>
           <div className="small button-group">
-            <a className="button" onClick={this.props.handleFormSubmit}>POST</a>
+            <button className="button" onClick={this.props.handleFormSubmit}>POST</button>
             <a className="alert button" onClick={this.handleClearForm}>CLEAR</a>
           </div>
         </form>

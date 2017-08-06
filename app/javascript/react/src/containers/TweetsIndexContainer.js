@@ -18,6 +18,7 @@ class TweetsIndexContainer extends React.Component {
     .then((body) => {
       this.setState({ tweets: body.tweets })
     });
+    $(function(){ $(document).foundation(); })
   }
 
   addNewTweet(formPayload){
@@ -28,6 +29,7 @@ class TweetsIndexContainer extends React.Component {
     })
     .then((response) => response.json())
     .then((body) => {
+      debugger;
       this.setState({ tweets: [...this.state.tweets, body.tweet ]})
     })
   }
@@ -55,11 +57,13 @@ class TweetsIndexContainer extends React.Component {
     return(
       <div>
         <div className="row">
+          <h1>Share an investment</h1>
           <TweetFormContainer
             addNewTweet={this.addNewTweet}
           />
         </div>
         <div className="row">
+          <h1>Fresh Ideas</h1>
           {tweets}
         </div>
       </div>
