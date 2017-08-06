@@ -1,5 +1,4 @@
 import React from 'react';
-import Foundation from 'react-foundation';
 import { Link } from 'react-router';
 import TweetFormContainer from './TweetFormContainer';
 import TweetTile from '../components/TweetTile';
@@ -29,7 +28,6 @@ class TweetsIndexContainer extends React.Component {
     })
     .then((response) => response.json())
     .then((body) => {
-      debugger;
       this.setState({ tweets: [...this.state.tweets, body.tweet ]})
     })
   }

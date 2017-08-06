@@ -7,6 +7,7 @@
     <title>TWIKR</title>
 
     <%= stylesheet_link_tag    "application" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.1/css/foundation.min.css" />
     <%= javascript_include_tag "application" %>
     <%= javascript_pack_tag 'index.js' %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -27,7 +28,7 @@
              <% if user_signed_in? %>
                <li><%= link_to "Welcome #{current_user.username}!", root_path %></li>
                <% unless current_user.profile_photo.file.nil? %>
-                  <li id="profile-photo"><%= image_tag current_user.profile_photo.url, { size: "45x45" } %></li>
+                <li id="profile-photo"><%= image_tag current_user.profile_photo.url, { size: "45x45" } %></li>
                <% end %>
                <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

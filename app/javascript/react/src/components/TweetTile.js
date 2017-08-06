@@ -1,5 +1,4 @@
 import React from 'react';
-import Foundation from 'react-foundation';
 import { Link } from 'react-router';
 
 const TweetTile = (props) => {

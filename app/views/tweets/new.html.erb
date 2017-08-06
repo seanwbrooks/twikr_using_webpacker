@@ -1,0 +1,13 @@
+<h1>Share an investment</h1>
+
+<%if @tweet.errors.any?%>
+    <%@tweet.errors.full_messages.each do |msg|%>
+    <div> <%=msg%></div>
+    <%end%>
+<%end%>
+
+<%= simple_form_for @tweet do |f| %>
+  <%= f.input :ticker, label: "Ticker" %>
+  <%= f.input :body, label: "What do you think?" %>
+  <%= f.submit "POST" %>
+<%end%>
