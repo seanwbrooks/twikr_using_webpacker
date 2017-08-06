@@ -2,7 +2,8 @@ class Api::V1::TweetsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render json: Tweet.all, adapter: :json
+    @tweets = Tweet.all
+    render json: Tweet.order(updated_at: :desc).limit(20), adapter: :json
   end
 
   def show
