@@ -96,14 +96,12 @@ $include-html-global-classes: $include-html-classes;
 // $font-weight-bold: bold !default;
 
 // We use these as default colors throughout
-$primary-color: #AC0057;
+$primary-color: #333333;
 $secondary-color: #e7e7e7;
 $alert-color: #f04124;
 $success-color: #43AC6A;
 $warning-color: #f08a24;
 $info-color: #a0d3e8;
-
-$marigold: #F0B810;
 
 $white       : #FFFFFF;
 $ghost       : #FAFAFA;
@@ -429,12 +427,12 @@ $black       : #000000;
 // $button-lrg: rem-calc(18);
 
 // We use this to control the display property.
-// $button-display: inline-block;
+ $button-display: inline-block;
 // $button-margin-bottom: rem-calc(20);
 
 // We use these to control button text styles.
 // $button-font-family: $body-font-family;
-// $button-font-color: $white;
+$button-font-color: $white;
 // $button-font-color-alt: $oil;
 // $button-font-tny: rem-calc(11);
 // $button-font-sml: rem-calc(13);
@@ -448,8 +446,8 @@ $button-function-factor: -20%;
 
 // We use these to control button border and hover styles.
 $button-border-width: 1px;
-// $button-border-style: solid;
-// $button-bg-color: $primary-color;
+$button-border-style: solid;
+ $button-bg-color: $primary-color;
 // $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);

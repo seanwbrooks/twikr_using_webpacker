@@ -2,7 +2,25 @@ img {
   margin-top: 1rem;
 }
 
-.website {
-  display: block;
-  margin: auto;
+form#search-form {
+  margin: 1rem 1rem;
+  display: inline;
+}
+
+.tweet-block {
+  margin: 1rem 1rem;
+  border: solid;
+}
+
+input.search {
+  border: solid
+}
+
+.search-form-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.body {
+  padding-top: 2rem;
 }

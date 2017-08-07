@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
   before_action :check_user, only: [:edit, :update, :destroy]
 
   def index
+    @tweet = Tweet.new
     @tweets = Tweet.search(params[:search])
     if params[:search]
       Tweet.search(params[:search])

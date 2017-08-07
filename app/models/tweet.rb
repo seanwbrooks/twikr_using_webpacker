@@ -3,7 +3,7 @@ class Tweet < ApplicationRecord
   belongs_to :user
 
   validates :ticker, presence: true
-  validates :body, presence: true, length: { minimum: 4, maximum: 200 }
+  validates :body, length: { maximum: 200 }
 
   def self.search(query)
     where("ticker like ?", "%#{query}%")

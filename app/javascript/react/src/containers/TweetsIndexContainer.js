@@ -7,9 +7,11 @@ class TweetsIndexContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: []
+      tweets: [],
+      search: ''
     }
     this.addNewTweet = this.addNewTweet.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -18,7 +20,18 @@ class TweetsIndexContainer extends React.Component {
     .then((body) => {
       this.setState({ tweets: body.tweets })
     });
-    $(function(){ $(document).foundation(); })
+  }
+
+  handleSearchSubmit() {
+    fetch('/api/v1/tweets'), {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: this.state.search
+    }
+    .then((response) => response.json())
+    .then((body) => {
+      this.setState({ tweets: body.tweets })
+    });
   }
 
   addNewTweet(formPayload){
@@ -29,9 +42,8 @@ class TweetsIndexContainer extends React.Component {
     })
     .then((response) => response.json())
     .then((body) => {
-      debugger;
-      this.setState({ tweets: [...this.state.tweets, body.tweet ]})
-    })
+      this.setState({ tweets: body.tweets })
+    });
   }
 
   render() {
@@ -55,15 +67,30 @@ class TweetsIndexContainer extends React.Component {
     });
 
     return(
-      <div>
+      <div className="body">
         <div className="row">
-          <h1>Share an investment</h1>
+          <form onSubmit={this.handleSearchSubmit}>
+            <div className="row">
+              <div className="large-12 columns">
+                <div className="row collapse">
+                  <div className="small-10 columns">
+                    <input type="text" placeholder="Ticker Search" value={this.state.search} />
+                  </div>
+                  <div className="small-2 columns">
+                    <input type="submit" className="button postfix" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className="row">
+          <h1>What's your big idea?</h1>
           <TweetFormContainer
             addNewTweet={this.addNewTweet}
           />
         </div>
         <div className="row">
-          <h1>Fresh Ideas</h1>
           {tweets}
         </div>
       </div>

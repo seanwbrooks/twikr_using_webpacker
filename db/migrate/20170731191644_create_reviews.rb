@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.1]
       t.belongs_to :user, null: false
       t.string :comment, null: false
 
-      t.timestamp null: false
+      t.timestamps
     end
   end
 end

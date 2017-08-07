@@ -58,9 +58,9 @@ class TweetFormContainer extends React.Component {
               handleChange={this.handleChange}
             />
           </div>
-          <div className="small button-group">
-            <button className="button" onClick={this.props.handleFormSubmit}>POST</button>
-            <a className="alert button" onClick={this.handleClearForm}>CLEAR</a>
+          <div className="button-group">
+            <input type="submit" className="primary button" onClick={this.props.handleFormSubmit} />
+            <a className="secondary button" onClick={this.handleClearForm}>Clear</a>
           </div>
         </form>
       </div>

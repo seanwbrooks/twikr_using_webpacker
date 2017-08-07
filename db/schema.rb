@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20170805140951) do
     t.bigint "tweet_id", null: false
     t.bigint "user_id", null: false
     t.string "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["tweet_id"], name: "index_reviews_on_tweet_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -29,8 +31,10 @@ ActiveRecord::Schema.define(version: 20170805140951) do
     t.string "percent_change", null: false
     t.string "market_capitalization", null: false
     t.string "rating", null: false
-    t.string "body", null: false
+    t.string "body"
     t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
