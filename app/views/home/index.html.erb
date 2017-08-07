@@ -1,3 +1,20 @@
 <% if user_session %>
   <div id="app"></div>
+<% else %>
+  <div class="home">
+    <div class="card">
+      <div class="row">
+        <h1>TWIKR</h1>
+      </div>
+      <div class="row">
+        <h3>TWIKR is a financial commmunications platform.</h3>
+      </div>
+      <div class="row">
+        <h4>Share your ideas. Follow stocks.</h4>
+      </div>
+      <div class="row">
+        <a href="<%= new_user_registration_path %>" class="button large">Sign Up</a>
+      </div>
+    </div>
+  </div>
 <% end %>

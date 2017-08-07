@@ -12,6 +12,7 @@ class TweetsIndexContainer extends React.Component {
     }
     this.addNewTweet = this.addNewTweet.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +27,7 @@ class TweetsIndexContainer extends React.Component {
     fetch('/api/v1/tweets'), {
       method: 'POST',
       credentials: 'same-origin',
-      body: this.state.search
+      body: JSON.stringify(this.state.search)
     }
     .then((response) => response.json())
     .then((body) => {
@@ -46,6 +47,17 @@ class TweetsIndexContainer extends React.Component {
     });
   }
 
+  handleDelete(){
+    fetch('/api/v1/tweets', {
+      method: 'DELETE',
+      credentials: 'same-origin'
+    })
+    .then((response) => response.json())
+    .then((body) => {
+      alert("Post was successfully deleted.")
+    })
+  }
+
   render() {
     let tweets = this.state.tweets.map((tweet) => {
       return(
@@ -61,6 +73,7 @@ class TweetsIndexContainer extends React.Component {
             rating={tweet.rating}
             body={tweet.body}
             reviews={tweet.reviews}
+            handleDelete={this.handleDelete}
           />
         </div>
       );

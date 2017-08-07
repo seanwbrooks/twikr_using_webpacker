@@ -3,7 +3,7 @@ class Api::V1::TweetsController < ApplicationController
 
   def index
     if params[:search]
-      binding.pry
+
     end
     @tweets = Tweet.all
     render json: @tweets.reverse, adapter: :json
@@ -43,5 +43,10 @@ class Api::V1::TweetsController < ApplicationController
     else
       return render json: {}, adapter: :json
     end
+  end
+
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
   end
 end

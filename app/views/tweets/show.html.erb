@@ -8,26 +8,25 @@
 
 
 <div class="reviews">
-    <h3>Reviews</h3>
-      <% @reviews.each do |review| %>
-        <div class="show-page-review">
-          <b><%= review.user.username %></b>
-          <% if user_signed_in? %>
-            <% if (current_user.admin?) || (current_user == review.user) %>
-              <%= link_to "Edit Review", edit_tweet_review_path(@tweet.id, review.id) %>
-              <%= link_to "Delete Review", tweet_review_path(@tweet.id, review.id), method: :delete %>
-            <% end %>
+  <h3>Reviews</h3>
+    <% @reviews.each do |review| %>
+      <div class="show-page-review">
+        <b><%= review.user.username %></b>
+        <% if user_signed_in? %>
+          <% if (current_user.admin?) || (current_user == review.user) %>
+            <%= link_to "Edit Review", edit_tweet_review_path(@tweet.id, review.id) %>
+            <%= link_to "Delete Review", tweet_review_path(@tweet.id, review.id), method: :delete %>
           <% end %>
-          <hr />
-          <% if review.body.length > 0 %>
-            <span class="review-body">
-              <%= review.body %>
-            </span>
-            <br />
-          <% end %>
-        </div>
-      <% end %>
-  <% end %>
+        <% end %>
+        <hr />
+        <% if review.body.length > 0 %>
+          <span class="review-body">
+            <%= review.body %>
+          </span>
+          <br />
+        <% end %>
+      </div>
+    <% end %>
   <% if user_signed_in? %>
     <div class="review-form">
       <%= form_for [@tweet, @review] do |f| %>
