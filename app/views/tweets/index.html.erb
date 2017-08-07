@@ -3,7 +3,9 @@
   <%= text_field_tag :search, params[:search], placeholder: "Ticker Search" %>
   <%= submit_tag "Search", :name => nil %>
 <% end %>
-<h1>What's being shared</h1>
+
+<h1>What's your big idea?</h1>
+
 <% @tweets.each do |tweet| %>
   <div class="callout secondary">
     <div class="row">
