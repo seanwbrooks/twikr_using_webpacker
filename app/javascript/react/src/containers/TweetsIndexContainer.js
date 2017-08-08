@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
 import TweetFormContainer from './TweetFormContainer';
+import TweetSearchContainer from './TweetSearchContainer';
 import TweetTile from '../components/TweetTile';
 
 class TweetsIndexContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: [],
-      search: ''
+      tweets: []
     }
     this.addNewTweet = this.addNewTweet.bind(this);
-    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -23,12 +23,11 @@ class TweetsIndexContainer extends React.Component {
     });
   }
 
-  handleSearchSubmit() {
-    fetch('/api/v1/tweets'), {
-      method: 'POST',
-      credentials: 'same-origin',
-      body: JSON.stringify(this.state.search)
-    }
+  handleSearch(formPayload) {
+    let query = '?stock=' + encodeURIComponent(formPayload.search);
+    fetch('/api/v1/tweets/search' + query, {
+      credentials: 'same-origin'
+    })
     .then((response) => response.json())
     .then((body) => {
       this.setState({ tweets: body.tweets })
@@ -48,13 +47,14 @@ class TweetsIndexContainer extends React.Component {
   }
 
   handleDelete(){
-    fetch('/api/v1/tweets', {
+    let id = something;
+    fetch('/api/v1/tweets/${id}', {
       method: 'DELETE',
       credentials: 'same-origin'
     })
     .then((response) => response.json())
     .then((body) => {
-      alert("Post was successfully deleted.")
+      this.setState({ tweets: body.tweets })
     })
   }
 
@@ -82,20 +82,9 @@ class TweetsIndexContainer extends React.Component {
     return(
       <div className="body">
         <div className="row">
-          <form onSubmit={this.handleSearchSubmit}>
-            <div className="row">
-              <div className="large-12 columns">
-                <div className="row collapse">
-                  <div className="small-10 columns">
-                    <input type="text" placeholder="Ticker Search" value={this.state.search} />
-                  </div>
-                  <div className="small-2 columns">
-                    <input type="submit" className="button postfix" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
+          <TweetSearchContainer
+            handleSearch={this.handleSearch}
+          />
         </div>
         <div className="row">
           <h1>What's your big idea?</h1>

@@ -2,11 +2,18 @@ class Api::V1::TweetsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    if params[:search]
-
-    end
     @tweets = Tweet.all
     render json: @tweets.reverse, adapter: :json
+  end
+
+  def search
+    if params[:stock] != ""
+      @tweets = Tweet.where(ticker: params[:stock])
+      render json: @tweets.reverse, adapter: :json
+    else
+      @tweets = Tweet.all
+      render json: @tweets.reverse, adapter: :json
+    end
   end
 
   def show
@@ -27,7 +34,7 @@ class Api::V1::TweetsController < ApplicationController
     elsif @buy < 5
       @position = "-"
     else
-      @postion = "Secure"
+      @postion = "Value"
     end
     @new_tweet = Tweet.new(
       ticker: @stock["quote"]["symbol"],
@@ -37,11 +44,13 @@ class Api::V1::TweetsController < ApplicationController
       rating: @position,
       body: data["body"],
       user_id: current_user.id)
-    if @new_tweet.save
+    if @new_tweet.ticker == nil || @new_tweet.ask == nil
+      @tweets_without_post = Tweet.order(updated_at: :desc).limit(20)
+      return render json: @tweets_without_post, adapter: :json
+    else
+      @new_tweet.save
       @tweets = Tweet.order(updated_at: :desc).limit(20)
       return render json: @tweets, adapter: :json
-    else
-      return render json: {}, adapter: :json
     end
   end
 

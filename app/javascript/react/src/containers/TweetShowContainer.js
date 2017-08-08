@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import ReviewTile from '../components/ReviewTile';
 
 class TweetShowContainer extends React.Component {
   constructor(props) {
@@ -20,9 +21,22 @@ class TweetShowContainer extends React.Component {
   }
 
   render() {
-    return(
-      <div>
+    let reviews = this.state.reviews.map((review) => {
+      return(
+        <ReviewTile
+          id={review.id}
+          key={review.id}
+          comment={review.comment}
+        />
+      );
+    });
 
+    return(
+      <div className="row">
+        <h1>{this.state.tweet.ticker}</h1>
+        <div className="row">
+          {reviews}
+        </div>
       </div>
     );
   }
