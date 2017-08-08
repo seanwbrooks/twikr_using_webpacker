@@ -1,0 +1,13 @@
+<%= form_for :tweet do |f| %>
+  <div class="field">
+    <%= f.label :ticker, "Ticker" %>
+    <%= f.text_field :ticker %>
+  </div>
+  <div class="field">
+    <%= f.label :body, "What do you think?" %>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit "POST" %>
+  </div>
+<% end %>

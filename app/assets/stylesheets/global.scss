@@ -1,0 +1,49 @@
+img {
+  margin-top: 1rem;
+}
+
+form#search-form {
+  margin: 1rem 1rem;
+  display: inline;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.tweet-block {
+  margin: 1rem 1rem;
+  border: solid;
+}
+
+input.search {
+  border: solid
+}
+
+div.panel:hover {
+  box-shadow: 10px 10px 5px grey;
+}
+
+div.panel.white {
+  background-color: #FFF;
+}
+
+.search-form-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.body {
+  padding-top: 2rem;
+}
+
+.home {
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.card {
+  background-color: RGB(255,255,255);
+  border: solid;
+}

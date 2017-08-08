@@ -2,7 +2,18 @@ class Api::V1::TweetsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render json: Tweet.all, adapter: :json
+    @tweets = Tweet.all
+    render json: @tweets.reverse, adapter: :json
+  end
+
+  def search
+    if params[:stock] != ""
+      @tweets = Tweet.where(ticker: params[:stock])
+      render json: @tweets.reverse, adapter: :json
+    else
+      @tweets = Tweet.all
+      render json: @tweets.reverse, adapter: :json
+    end
   end
 
   def show
@@ -11,26 +22,40 @@ class Api::V1::TweetsController < ApplicationController
   end
 
   def create
-    json = JSON.parse(request.body.read)
-    @stock = StockQuote::Stock.json_quote(json["ticker"])
+    data = JSON.parse(request.body.read)
+    @stock = StockQuote::Stock.json_quote(data["ticker"])
     @pegratio = @stock["quote"]["PEGRatio"].to_f
     @ask = @stock["quote"]["Ask"].to_f
     @fiftyday = @stock["quote"]["FiftydayMovingAverage"].to_f
     @buy = ((0.7) * @pegratio + (0.3) * (@ask - @fiftyday))
     @position = "-"
-    if @buy < 1
-      @position = "Buy"
+    if @buy < 0
+      @position = "Growth"
+    elsif @buy < 5
+      @position = "-"
+    else
+      @postion = "Value"
     end
-    new_tweet = Tweet.create(
+    @new_tweet = Tweet.new(
       ticker: @stock["quote"]["symbol"],
       ask: @stock["quote"]["Ask"],
       percent_change: @stock["quote"]["PercentChange"],
       market_capitalization: @stock["quote"]["MarketCapitalization"],
       rating: @position,
-      body: json["body"],
-      user_id: current_user.id
-    )
-    binding.pry
-    render json: new_tweet, adapter: :json
+      body: data["body"],
+      user_id: current_user.id)
+    if @new_tweet.ticker == nil || @new_tweet.ask == nil
+      @tweets_without_post = Tweet.order(updated_at: :desc).limit(20)
+      return render json: @tweets_without_post, adapter: :json
+    else
+      @new_tweet.save
+      @tweets = Tweet.order(updated_at: :desc).limit(20)
+      return render json: @tweets, adapter: :json
+    end
+  end
+
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
   end
 end
