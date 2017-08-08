@@ -47,7 +47,6 @@ class TweetsIndexContainer extends React.Component {
   }
 
   handleDelete(){
-    let id = something;
     fetch('/api/v1/tweets/${id}', {
       method: 'DELETE',
       credentials: 'same-origin'

@@ -1,24 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Review from './ReviewTile';
+import Review from '../components/ReviewTile';
 
 const TweetTile = (props) => {
-  return(
-    <div className="panel tweet">
-      <div className="row">
-        <div className="small-1 columns"></div>
-        <div className="small-2 columns text-center"><strong>Ticker</strong></div>
-        <div className="small-2 columns text-center"><strong>Ask</strong></div>
-        <div className="small-2 columns text-center"><strong>Daily Change (%)</strong></div>
-        <div className="small-2 columns text-center"><strong>Market Cap</strong></div>
-        <div className="small-2 columns text-center"><strong>Rating</strong></div>
-        <div className="small-1 columns">
-          <i className="fa fa-times" onClick={props.handleDelete} aria-hidden="true"></i>
+    return(
+      <div className="panel tweet">
+        <div className="row">
+          <div className="small-1 columns"></div>
+          <div className="small-2 columns text-center"><strong>Ticker</strong></div>
+          <div className="small-2 columns text-center"><strong>Ask</strong></div>
+          <div className="small-2 columns text-center"><strong>Daily Change (%)</strong></div>
+          <div className="small-2 columns text-center"><strong>Market Cap</strong></div>
+          <div className="small-2 columns text-center"><strong>Rating</strong></div>
+          <div className="small-1 columns">
+            <i className="fa fa-times" onClick={props.handleDelete} aria-hidden="true"></i>
+          </div>
         </div>
-      </div>
-      <div className="row">
-        <div className="small-1 columns"></div>
-        <Link to={`/tweets/${props.id}`}>
+        <div className="row">
+          <div className="small-1 columns"></div>
+          <Link to={`/tweets/${props.id}`}>
           <div className="small-2 columns text-center">{props.ticker}</div>
         </Link>
         <div className="small-2 columns text-center">{props.ask}</div>
@@ -44,6 +44,6 @@ const TweetTile = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default TweetTile;
