@@ -7,7 +7,6 @@ describe Tweet do
   it { should_not have_valid(:ticker).when(nil, '') }
 
   it { should have_valid(:body).when('This is a stock to watch out for.') }
-  it { should_not have_valid(:body).when(nil, '') }
 
   it { should have_valid(:ask).when('23.00') }
 
