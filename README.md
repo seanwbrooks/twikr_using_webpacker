@@ -1,5 +1,4 @@
 **TWIKR**
-![Code Climate](https://codeclimate.com/github/seanwbrooks/twikr_using_webpacker.png)
 
 TWIKR is a financial communication platform for user to share their ideas and follow stocks. The application uses a React on Rails framework.
 
