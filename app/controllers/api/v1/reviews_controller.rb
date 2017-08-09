@@ -1,9 +1,9 @@
-class Api::V1::TweetsController < ApplicationController
+class Api::V1::ReviewsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @tweets = Tweet.all
-    render json: @tweets.reverse, adapter: :json
+    @tweet = Tweet.find(params[:tweet_id])
+    render json: @tweet.reviews, adapter: :json
   end
 
   def search
@@ -32,7 +32,7 @@ class Api::V1::TweetsController < ApplicationController
     if @buy < 0
       @position = "Growth"
     elsif @buy < 5
-      @position = "Balanced"
+      @position = "-"
     else
       @postion = "Value"
     end
