@@ -6,21 +6,21 @@ class TweetShowContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweet: {},
       reviews: []
     }
   }
 
   componentDidMount() {
     let tweetId = this.props.params.id;
-    fetch(`/api/v1/tweets/${tweetId}`)
+    fetch(`/api/v1/tweets/${tweetId}/reviews`)
     .then((response) => response.json())
     .then((body) => {
-      this.setState({ tweet: body.tweet, reviews: body.tweet.reviews })
+      this.setState({ reviews: body.reviews })
     });
   }
 
   render() {
+    debugger;
     let reviews = this.state.reviews.map((review) => {
       return(
         <ReviewTile
@@ -33,7 +33,6 @@ class TweetShowContainer extends React.Component {
 
     return(
       <div className="row">
-        <h1>{this.state.tweet.ticker}</h1>
         <div className="row">
           {reviews}
         </div>

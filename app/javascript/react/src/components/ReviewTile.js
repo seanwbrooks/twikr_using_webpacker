@@ -3,10 +3,8 @@ import { Link } from 'react-router';
 
 const ReviewTile = (props) => {
   return(
-    <div className="callout secondary">
-      <div className="row">
-        <div>{props.comment}</div>
-      </div>
+    <div className="row">
+      <div className="small-12 columns">{props.comment}</div>
     </div>
   );
 }
