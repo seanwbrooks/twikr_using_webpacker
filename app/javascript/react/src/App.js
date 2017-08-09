@@ -8,6 +8,7 @@ const App = props => {
     <div>
       <Router history={browserHistory}>
         <Route path='/' component={ TweetsIndexContainer } />
+        <Route path='/tweets' component={ TweetsIndexContainer } />
         <Route path='/tweets/:id' component={ TweetShowContainer } />
       </Router>
     </div>
