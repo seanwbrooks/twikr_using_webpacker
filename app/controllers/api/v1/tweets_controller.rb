@@ -30,11 +30,11 @@ class Api::V1::TweetsController < ApplicationController
     @buy = ((0.7) * @pegratio + (0.3) * (@ask - @fiftyday))
     @position = "-"
     if @buy < 0
-      @position = "Growth"
+      @position = "High"
     elsif @buy < 5
-      @position = "Balanced"
+      @position = "-"
     else
-      @postion = "Value"
+      @postion = "Low"
     end
     @new_tweet = Tweet.new(
       ticker: @stock["quote"]["symbol"],

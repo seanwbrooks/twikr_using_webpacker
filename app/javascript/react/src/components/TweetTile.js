@@ -22,7 +22,7 @@ const TweetTile = (props) => {
         <div className="small-2 columns text-center"><strong>Ask</strong></div>
         <div className="small-2 columns text-center"><strong>Daily Change (%)</strong></div>
         <div className="small-2 columns text-center"><strong>Market Cap</strong></div>
-        <div className="small-2 columns text-center"><strong>Rating</strong></div>
+        <div className="small-2 columns text-center"><strong>Growth</strong></div>
         <div className="small-1 columns">
           <i className="fa fa-times" onClick={props.handleDelete} aria-hidden="true"></i>
         </div>
