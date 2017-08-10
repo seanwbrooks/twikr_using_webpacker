@@ -74,7 +74,7 @@ class TweetsIndexContainer extends React.Component {
       });
 
       return(
-        <div className="panel">
+        <div key={tweet.id} className="panel">
           <div className="row">
             <div className="row">
               <TweetTile
