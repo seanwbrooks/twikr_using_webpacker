@@ -9,7 +9,7 @@ form#search-form {
 
 @font-face {
   font-family: BebasNeue;
-  src: url(./fonts/BebasNeue.otf);
+  src: url(asset-path('./fonts/BebasNeue.otf'));
 }
 
 h1 {
