@@ -124,7 +124,7 @@ class TweetsIndexContainer extends React.Component {
           />
         </div>
         <div className="row">
-          <h1>What's your big idea?</h1>
+          <h2>What's your big idea?</h2>
           <TweetFormContainer
             addNewTweet={this.addNewTweet}
           />

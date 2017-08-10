@@ -7,11 +7,33 @@ form#search-form {
   display: inline;
 }
 
+@font-face {
+  font-family: BebasNeue;
+  src: url(./fonts/BebasNeue.otf);
+}
+
 h1 {
+  font-family: BebasNeue;
   text-align: center;
+  font-size: 150px;
   color: #2aa0e5;
-  font-style: bold;
-  font-family: 'PT Sans', sans-serif;
+  height: 160px;
+}
+
+h2 {
+  font-family: BebasNeue;
+  text-align: center;
+  font-size: 75px;
+  color: #2aa0e5;
+  -webkit-transition: font-size 1s ease-out;
+  -moz-transition: font-size 1s ease-out;
+  -o-transition: font-size 1s ease-out;
+  transition: font-size 1s ease-out;
+}
+
+h2:hover {
+  font-size: 79px;
+  cursor: pointer;
 }
 
 .tweet-block {
@@ -19,12 +41,21 @@ h1 {
   border: solid;
 }
 
+h3 {
+  font-family: BebasNeue;
+}
+
+h4 {
+  font-family: BebasNeue;
+  padding-bottom: 5px;
+}
+
 input.search {
   border: solid
 }
 
 div.panel {
-  transition-duration: 1s; 
+  transition-duration: 1s;
 }
 
 div.panel:hover {
@@ -49,10 +80,17 @@ div.panel.white {
   text-align: center;
 }
 
+.card:hover {
+  box-shadow: 10px 10px 5px grey;
+}
+
 .card {
+  transition-duration: 1s;
   background-color: RGB(255,255,255);
   border: groove;
   border-radius: 25px;
+  width: 600px;
+  margin: auto;
 }
 
 .tweet-body {
