@@ -4,7 +4,7 @@ class TweetSearchContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: null
+      search: ''
     }
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
