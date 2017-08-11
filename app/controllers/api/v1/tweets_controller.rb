@@ -3,17 +3,17 @@ class Api::V1::TweetsController < ApplicationController
   before_action :check_user, only: [:destroy]
 
   def index
-    @tweets = Tweet.all
-    render json: @tweets.reverse, adapter: :json
+    @tweets = Tweet.order(updated_at: :desc).limit(20)
+    render json: @tweets, adapter: :json
   end
 
   def search
     if params[:stock] != ""
       @tweets = Tweet.where(ticker: params[:stock])
-      render json: @tweets.reverse, adapter: :json
+      render json: @tweets.order(updated_at: :desc), adapter: :json
     else
-      @tweets = Tweet.all
-      render json: @tweets.reverse, adapter: :json
+      @tweets = Tweet.order(updated_at: :desc)
+      render json: @tweets, adapter: :json
     end
   end
 
@@ -32,7 +32,7 @@ class Api::V1::TweetsController < ApplicationController
     @position = "-"
     if @buy < 0
       @position = "High"
-    elsif @buy < 5
+    elsif @buy < 0.5
       @position = "-"
     else
       @postion = "Low"
@@ -45,7 +45,7 @@ class Api::V1::TweetsController < ApplicationController
       rating: @position,
       body: data["body"],
       user_id: current_user.id)
-    if @new_tweet.ticker == nil || @new_tweet.ask == nil
+    if @new_tweet.ticker == nil || @new_tweet.ask == nil || @new_tweet.percent_change == nil
       @tweets_without_post = Tweet.order(updated_at: :desc).limit(20)
       return render json: @tweets_without_post, adapter: :json
     else
