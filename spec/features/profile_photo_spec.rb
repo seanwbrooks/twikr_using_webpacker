@@ -14,7 +14,6 @@ feature "profile photo" do
     attach_file "Profile photo", "#{Rails.root}/spec/support/images/github.png"
     click_button "Sign Up"
 
-    expect(page).to have_content("You're in!")
     expect(page).to have_css("img[src*='github.png']")
   end
 end

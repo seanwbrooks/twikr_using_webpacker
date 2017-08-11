@@ -1,5 +1,6 @@
 class Api::V1::TweetsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :check_user, only: [:destroy]
 
   def index
     @tweets = Tweet.all
@@ -57,5 +58,17 @@ class Api::V1::TweetsController < ApplicationController
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
+    @tweets = Tweet.order(updated_at: :desc).limit(20)
+    return render json: @tweets, adapter: :json
+  end
+
+  private
+
+  def check_user
+    @tweet = Tweet.find(params[:id])
+    if @tweet.user != current_user
+      @tweets = Tweet.order(updated_at: :desc).limit(20)
+      return render json: @tweets, adapter: :json, alert: "Sorry, you don't have persmissions."
+    end
   end
 end
