@@ -1,0 +1,17 @@
+.home {
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.card:hover {
+  box-shadow: 10px 10px 5px grey;
+}
+
+.card {
+  transition-duration: 1s;
+  background-color: RGB(255,255,255);
+  border: groove;
+  border-radius: 25px;
+  width: 600px;
+  margin: auto;
+}
