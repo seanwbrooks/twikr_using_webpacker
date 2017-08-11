@@ -27,7 +27,7 @@
            <% if user_signed_in? %>
              <li><%= link_to "Welcome #{current_user.first_name}!", root_path %></li>
              <% unless current_user.profile_photo.file.nil? %>
-              <li id="profile-photo"><%= image_tag current_user.profile_photo.url, { size: "45x45" } %></li>
+              <li id="profile-photo"><%= image_tag current_user.profile_photo.url, { size: "60x60" } %></li>
              <% end %>
              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
@@ -38,7 +38,7 @@
          </ul>
        </section>
      </nav>
-     
+
      <div class="row">
        <div class="website">
          <%= yield %>

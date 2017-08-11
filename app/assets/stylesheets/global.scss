@@ -1,5 +1,6 @@
 img {
   margin-top: 1rem;
+  border-radius: 10%;
 }
 
 form#search-form {
@@ -59,7 +60,7 @@ div.panel {
 }
 
 div.panel:hover {
-  box-shadow: 10px 10px 5px grey;
+  box-shadow: 5px 5px 5px grey;
 }
 
 div.panel.white {
@@ -96,8 +97,9 @@ div.panel.white {
 .tweet-body {
   background-color: #FFF;
   margin: 0rem 4rem;
-  border-style: groove;
+  border: 1px solid #cccccc;
   border-width: 1px;
+  height: 3rem;
 }
 
 .reviews {

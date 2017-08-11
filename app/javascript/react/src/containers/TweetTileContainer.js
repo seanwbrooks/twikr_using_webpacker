@@ -7,7 +7,8 @@ class TweetTileContainer extends React.Component {
     super(props);
     this.state = {
       rating: null,
-      id: null
+      id: null,
+      comment: ""
     }
     this.handleDelete = this.handleDelete.bind(this);
   };
