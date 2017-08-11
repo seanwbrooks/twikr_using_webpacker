@@ -36,7 +36,7 @@ class TweetTileContainer extends React.Component {
           <div className="small-2 columns text-center"><strong>Ask</strong></div>
           <div className="small-2 columns text-center"><strong>Daily Change (%)</strong></div>
           <div className="small-2 columns text-center"><strong>Market Cap</strong></div>
-          <div className="small-2 columns text-center"><strong>Prediction</strong></div>
+          <div className="small-2 columns text-center"><strong>Growth Indicator</strong></div>
           <div className="small-1 columns">
             <i className="fa fa-times" onClick={this.handleDelete} aria-hidden="true"></i>
           </div>
