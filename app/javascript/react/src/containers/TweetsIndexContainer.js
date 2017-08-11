@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import TweetFormContainer from './TweetFormContainer';
 import TweetSearchContainer from './TweetSearchContainer';
-import TweetTile from '../components/TweetTile';
+import TweetTileContainer from './TweetTileContainer';
 import ReviewTile from '../components/ReviewTile';
 
 class TweetsIndexContainer extends React.Component {
@@ -16,7 +16,6 @@ class TweetsIndexContainer extends React.Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
-
   componentDidMount() {
     fetch('/api/v1/tweets')
     .then((response) => response.json())
@@ -48,8 +47,8 @@ class TweetsIndexContainer extends React.Component {
     });
   }
 
-  handleDelete(){
-    fetch('/api/v1/tweets/${id}', {
+  handleDelete(id){
+    fetch(`/api/v1/tweets/${id}`, {
       method: 'DELETE',
       credentials: 'same-origin'
     })
@@ -77,7 +76,7 @@ class TweetsIndexContainer extends React.Component {
         <div key={tweet.id} className="panel">
           <div className="row">
             <div className="row">
-              <TweetTile
+              <TweetTileContainer
                 id={tweet.id}
                 key={tweet.id}
                 username={tweet.user.username}
@@ -87,6 +86,7 @@ class TweetsIndexContainer extends React.Component {
                 market_capitalization={tweet.market_capitalization}
                 rating={tweet.rating}
                 body={tweet.body}
+                date={tweet.created_at}
                 handleDelete={this.handleDelete}
               />
             </div>

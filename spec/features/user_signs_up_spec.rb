@@ -14,7 +14,6 @@ feature 'user signs up' do
     fill_in 'Password Confirmation', with: 'password'
     click_button 'Sign Up'
 
-    expect(page).to have_content("You're in!")
     expect(page).to have_content("Sign Out")
   end
 
