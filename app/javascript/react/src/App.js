@@ -3,7 +3,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import TweetsIndexContainer from './containers/TweetsIndexContainer';
 import TweetShowContainer from './containers/TweetShowContainer';
 
-const App = props => {
+const App = (props) => {
   return(
     <div>
       <Router history={browserHistory}>
