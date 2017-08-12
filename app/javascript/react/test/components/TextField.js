@@ -2,16 +2,17 @@ import React from 'react';
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 
-import TextArea from '../../src/components/TextArea';
+import TextField from '../../src/components/TextField';
 
-describe('TextArea', () => {
-  let name, content, wrapper;
+describe('TextField', () => {
+  let name, value, content, wrapper;
 
   beforeEach(() => {
     wrapper = mount(
-      <TextArea
+      <TextField
         name="Input"
-        content="This is the contents of the textarea."
+        content="TSLA"
+        value="This is the contents of the textfield."
       />
     );
   });
@@ -21,6 +22,6 @@ describe('TextArea', () => {
   });
 
   it('should render an div tag with text', () => {
-    expect(wrapper.find('div').text()).toBe(">This is the contents of the textarea.");
+    expect(wrapper.find('div').text()).toBe('>');
   });
 })
