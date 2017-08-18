@@ -1,30 +1,37 @@
-# Synopsis
+# [TWIKR](https://twikr.herokuapp.com)
 
-TWIKR is a financial communications platform for people to share their ideas and follow stocks.
+TWIKR helps people follow stocks and share their ideas.  Users can make comments and predictions. Also, the application has an algorithm that predicts a stock's growth potential.
 
-# Motivation
-
-TWIKR is a final project, or "breakable toy", that I worked on at Launch Academy.
+Although TWIKR is my final project, for a coding bootcamp called Launch Academy, I plan on adding more features in the immediate future.  So TWIKR is still a work in progress. If you have any questions or comments, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/seanwbrooks/).
 
 # Technology
 React is a great front-end technology that makes websites dynamic and increases user experiences by cutting down page reloads with a virtual DOM.
 
-Rails was used for the back-end with PostGreSQL as the database. Rails is a convention-over-configuration framework that allowed me to get the application up and running without too much time spent on configuration decisions. PostGreSQL is a well documented and supported database that is also supported by Heroku.
+Rails is a convention-over-configuration framework that allowed me to get the application up and running without too much time spent on configuration decisions. I used a PostgreSQL database. PostGreSQL is supported by Heroku.
 
-Jasmine/Enzyme is used for testing the React components. RSpec is used for testing unit tests, such as controllers and models, on the back-end.
+Jasmine/Enzyme is used for testing the React components.
+RSpec is used for testing unit tests, such as controllers and models, on the back-end.
 
 # Installation
-To get setup run,
+Clone repo from terminal:
+`git clone https://github.com/seanwbrooks/twikr_using_webpacker.git`
+
+Change directory:
+`cd twikr_using_webpacker`
+
+Install gems, yarn, and setup database:
 ```
 bundle
-rake db:create
-rake db:migrate
-rails s
+yarn install
+rake db:create && rake db:migrate && rake db:seed
 ```
 
-In a separate terminal run,
+Start servers:
 ```
-yarn
+rails s
+```
+And in another tab:
+```
 npm start
 ```
 
@@ -37,7 +44,8 @@ To run Ruby tests,
 To run Jasmine/Enzyme tests,
 ```karma start```
 
-# Check It Out
-[TWIKR](https://twikr.herokuapp.com)
-
+# Badges
 ![Build Status](https://codeship.com/projects/ec276130-4de1-0135-1fe3-72fd8360efb5/status?branch=master)
+
+# Contributors
+Sean Brooks
