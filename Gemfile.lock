@@ -90,6 +90,7 @@ GEM
     foundation-rails (5.4.5.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    gem-wrappers (1.2.7)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -269,6 +270,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   foundation-rails
+  gem-wrappers (~> 1.2, >= 1.2.7)
   jquery-rails
   launchy
   listen (~> 3.0.5)

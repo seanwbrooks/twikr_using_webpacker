@@ -14,6 +14,7 @@ gem 'stock_quote'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'foundation-rails'
+gem 'gem-wrappers', '~> 1.2', '>= 1.2.7'
 
 group :development do
   gem 'listen', '~> 3.0.5'
