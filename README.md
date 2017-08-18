@@ -1,4 +1,6 @@
 **TWIKR**
+![Build Status](https://codeship.com/projects/ec276130-4de1-0135-1fe3-72fd8360efb5/status?branch=master)
+
 
 TWIKR is a financial communication platform for user to share their ideas and follow stocks. The application uses a React on Rails framework.
 
