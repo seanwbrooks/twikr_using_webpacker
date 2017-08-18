@@ -46,6 +46,7 @@ To run Jasmine/Enzyme tests,
 
 # Badges
 ![Build Status](https://codeship.com/projects/ec276130-4de1-0135-1fe3-72fd8360efb5/status?branch=master)
+![Coverage Status](https://coveralls.io/repos/seanwbrooks/twikr_using_webpacker/badge.png)
 
 # Contributors
 Sean Brooks
