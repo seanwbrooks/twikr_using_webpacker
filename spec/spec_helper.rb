@@ -14,6 +14,10 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+#Load and launch SimpleCov
+require 'simplecov'
+SimpleCov.start
+
 require 'coveralls'
 Coveralls.wear!('rails')
 
