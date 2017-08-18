@@ -51,7 +51,6 @@ class TweetsController < ApplicationController
     end
 
     if @stock["quote"]["symbol"] == nil || @stock["quote"]["Ask"] == nil
-      binding.pry
       render :new
     else
       @new_tweet = Tweet.create(
