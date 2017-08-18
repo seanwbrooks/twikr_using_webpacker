@@ -282,6 +282,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   shoulda
   simple_form
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   stock_quote
