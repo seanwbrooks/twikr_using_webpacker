@@ -14,9 +14,9 @@ end
 RSpec.describe "Review" do
   context "create a review" do
     #initialize models
-    let(:user){ FactoryGirl.build(:user) }
-    let(:tweet){ FactoryGirl.build(:tweet) }
-    let(:review){ FactoryGirl.build(:review) }
+    let(:user) { FactoryGirl.build(:user) }
+    let(:tweet) { FactoryGirl.build(:tweet) }
+    let(:review) { FactoryGirl.build(:review) }
 
     it "has a comment" do
       expect(review.comment).to include("This is a test for comment.")

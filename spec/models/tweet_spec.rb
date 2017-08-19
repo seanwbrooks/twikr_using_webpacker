@@ -5,7 +5,7 @@ describe Tweet do
   it { should belong_to :user }
 
   #validations with expected input
-  it { should have_valid(:ticker).when('tsla') }
+  it { should have_valid(:ticker).when('TSLA') }
   it { should have_valid(:body).when('This is a stock to watch out for.') }
   it { should have_valid(:ask).when('23.00') }
   it { should have_valid(:percent_change).when('-3.00%') }
@@ -16,8 +16,8 @@ end
 
 RSpec.describe 'Tweet' do
   context 'making new tweet' do
-    let(:user){ FactoryGirl.build(:user) }
-    let(:tweet){ FactoryGirl.build(:tweet) }
+    let(:user) { FactoryGirl.build(:user) }
+    let(:tweet) { FactoryGirl.build(:tweet) }
 
     it 'has a valid inputs' do
       expect(tweet.ticker).to include("TSLA")

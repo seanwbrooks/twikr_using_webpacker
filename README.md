@@ -2,7 +2,7 @@
 
 TWIKR helps people follow stocks and share their ideas.  Users can make comments and predictions. Also, the application has an algorithm that predicts a stock's growth potential.
 
-TWIKR is my final project for Launch Academy, a coding bootcamp in Boston, MA. I plan on adding more features in the immediate future and making the application more useful.  If you have any questions or comments, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/seanwbrooks/).
+TWIKR is my final project for Launch Academy, a coding bootcamp in Boston, MA. There will be more features coming to TWIKR in the future.  If you have any questions or comments, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/seanwbrooks/).
 
 # Technology
 * React
@@ -19,14 +19,17 @@ TWIKR is my final project for Launch Academy, a coding bootcamp in Boston, MA. I
 
 # Breakdown
 **Front-End**
-React is a JavaScript library for building User Interfaces.  In my opinion, it is a great front-end technology that makes websites dynamic and increases user experiences by cutting down page reloads with a virtual DOM.
+⋅⋅⋅React is a JavaScript library for building User Interfaces.  It is a great front-end technology that makes websites dynamic and increases user experiences by cutting down page reloads with a virtual DOM.
 
 **Framework**
-Rails is a popular convention-over-configuration framework. Rails is easy to use because of its emphasis on convention.  Also, I used a PostgreSQL database that was supported by Heroku.
+⋅⋅⋅Rails is a popular convention-over-configuration framework. Rails is easy to use because of its emphasis on convention.  
+
+**Database**
+⋅⋅⋅I used a PostgreSQL database that was supported by Heroku.
 
 **Testing**
-Jasmine/Enzyme is used for testing the front-end React components.
-RSpec is used for unit testing for API endpoints, serializers, controllers, and models.
+⋅⋅⋅Jasmine/Enzyme is used for testing the front-end React components.
+⋅⋅⋅RSpec is used for unit testing for API endpoints, serializers, controllers, and models.
 
 # Installation
 Clone repo from terminal:
@@ -65,4 +68,4 @@ To run Jasmine/Enzyme tests (located in the `/app/javascript/react/test` folder)
 **Sean Brooks**
 
 # Acknowledgments
-I'd like to thank everyone at [Launch Academy](https://www.launchacademy.com/).  The Experience Engineers, my peers, and the past cohorts, whose insight has made previous curriculums better than before, were valuable resources that helped me make this project possible.  
+I'd like to thank everyone at [Launch Academy](https://www.launchacademy.com/).  My mentors and peers were valuable resources that helped me make this project possible.  Also, a big thanks to the years of previous Launchers for building a stronger curriculum and helping those who have come after you.  
