@@ -2,15 +2,31 @@
 
 TWIKR helps people follow stocks and share their ideas.  Users can make comments and predictions. Also, the application has an algorithm that predicts a stock's growth potential.
 
-Although TWIKR is my final project, for a coding bootcamp called Launch Academy, I plan on adding more features in the immediate future.  So TWIKR is still a work in progress. If you have any questions or comments, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/seanwbrooks/).
+TWIKR is my final project for Launch Academy, a coding bootcamp in Boston, MA. I plan on adding more features in the immediate future and making the application more useful.  If you have any questions or comments, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/seanwbrooks/).
 
 # Technology
-React is a great front-end technology that makes websites dynamic and increases user experiences by cutting down page reloads with a virtual DOM.
+* React
+* JavaScript
+* Foundation
+* Rails
+* PostgreSQL
+* JSON
+* CSS
+* HTML
+* RSpec
+* Enzyme
+* Jasmine
 
-Rails is a convention-over-configuration framework that allowed me to get the application up and running without too much time spent on configuration decisions. I used a PostgreSQL database. PostGreSQL is supported by Heroku.
+# Breakdown
+**Front-End**
+React is a JavaScript library for building User Interfaces.  In my opinion, it is a great front-end technology that makes websites dynamic and increases user experiences by cutting down page reloads with a virtual DOM.
 
-Jasmine/Enzyme is used for testing the React components.
-RSpec is used for testing unit tests, such as controllers and models, on the back-end.
+**Framework**
+Rails is a popular convention-over-configuration framework. Rails is easy to use because of its emphasis on convention.  Also, I used a PostgreSQL database that was supported by Heroku.
+
+**Testing**
+Jasmine/Enzyme is used for testing the front-end React components.
+RSpec is used for unit testing for API endpoints, serializers, controllers, and models.
 
 # Installation
 Clone repo from terminal:
@@ -26,22 +42,19 @@ yarn install
 rake db:create && rake db:migrate && rake db:seed
 ```
 
-Start servers:
+Start Rails and React servers (note: in two separate tabs):
 ```
 rails s
-```
-And in another tab:
-```
 npm start
 ```
 
 Open a browser and go to `localhost:3000`
 
 # Tests
-To run Ruby tests,
+To run RSpec tests (located in the `/spec` folder):
 ```rake```
 
-To run Jasmine/Enzyme tests,
+To run Jasmine/Enzyme tests (located in the `/app/javascript/react/test` folder):
 ```karma start```
 
 # Badges
@@ -49,4 +62,7 @@ To run Jasmine/Enzyme tests,
 ![Coverage Status](https://coveralls.io/repos/seanwbrooks/twikr_using_webpacker/badge.png)
 
 # Contributors
-Sean Brooks
+**Sean Brooks**
+
+# Acknowledgments
+I'd like to thank everyone at [Launch Academy](https://www.launchacademy.com/).  The Experience Engineers, my peers, and the past cohorts, whose insight has made previous curriculums better than before, were valuable resources that helped me make this project possible.  
