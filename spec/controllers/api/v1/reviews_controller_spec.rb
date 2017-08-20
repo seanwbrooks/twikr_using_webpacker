@@ -18,7 +18,6 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
     it "returns a list of most recent reviews" do
       hash_body = nil
       expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
-      binding.pry
       expect(hash_body["reviews"][0]).to have_content("This is a second test for reviews.")
       expect(hash_body["reviews"][1]).to have_content("This is a test for reviews.")
     end
