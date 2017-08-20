@@ -64,7 +64,7 @@ To run Jasmine/Enzyme tests (located in the `/app/javascript/react/test` folder)
 
 # Badges
 ![Build Status](https://codeship.com/projects/ec276130-4de1-0135-1fe3-72fd8360efb5/status?branch=master)
-![Coverage Status](https://coveralls.io/repos/github/seanwbrooks/twikr_using_webpacker/badge.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/seanwbrooks/twikr_using_webpacker/badge.svg?branch=master)](https://coveralls.io/github/seanwbrooks/twikr_using_webpacker?branch=master)
 
 # Contributors
 **Sean Brooks**
