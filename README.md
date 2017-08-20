@@ -70,4 +70,5 @@ To run Jasmine/Enzyme tests (located in the `/app/javascript/react/test` folder)
 **Sean Brooks**
 
 # Acknowledgments
-I'd like to thank everyone at [Launch Academy](https://www.launchacademy.com/). 😀  My mentors and peers were valuable resources that helped me make this project possible.   
+I'd like to thank everyone at [Launch Academy](https://www.launchacademy.com/). 😀  My mentors and peers were valuable resources that helped me make this project possible.
+  
