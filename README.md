@@ -1,5 +1,7 @@
 # [TWIKR](https://twikr.herokuapp.com)
 
+![TWIKR](./app/assets/images/twikr.png)
+
 TWIKR helps people follow stocks and share their ideas.  Users can make comments and predictions. Also, the application has an algorithm that predicts a stock's growth potential.
 
 TWIKR is my final project for Launch Academy, a coding bootcamp in Boston, MA. There will be more features coming to TWIKR in the future.  If you have any questions or comments, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/seanwbrooks/).
