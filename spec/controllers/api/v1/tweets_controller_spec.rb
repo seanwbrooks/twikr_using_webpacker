@@ -94,4 +94,39 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
       expect(hash_body["tweet"]["user"]["first_name"]).to eq("John")
     end
   end
+
+  describe "DELETE #destroy" do
+    context "user successfully deletes own post" do
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+        @tweet = Tweet.create(ticker: "TSLA", ask: "325.78", percent_change: "3.45%", market_capitalization: "3.0B", rating: "High", body: "This is a test for Tweet body.", user_id: @user.id)
+        @review = Review.create(comment: "This is a review.", user_id: @user.id, tweet_id: @tweet.id)
+      end
+
+      it "returns json without tweet" do
+        delete :destroy, params: { id: @tweet.id }
+        returned_json = JSON.parse(response.body)
+        expect(returned_json).to_not include("TSLA")
+        expect(Tweet.all.count).to eq(0)
+      end
+    end
+
+    context "user cannot delete other post" do
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        @user_two = FactoryGirl.create(:user)
+        sign_in @user_two
+        @tweet = Tweet.create(ticker: "TSLA", ask: "325.78", percent_change: "3.45%", market_capitalization: "3.0B", rating: "High", body: "This is a test for Tweet body.", user_id: @user.id)
+        @review = Review.create(comment: "This is a review.", user_id: @user.id, tweet_id: @tweet.id)
+      end
+
+      it "returns json with tweet" do
+        delete :destroy, params: { id: @tweet.id }
+        returned_json = JSON.parse(response.body)
+        expect(returned_json["tweets"][0]["ticker"]).to include("TSLA")
+        expect(Tweet.all.count).to eq(1)
+      end
+    end
+  end
 end
