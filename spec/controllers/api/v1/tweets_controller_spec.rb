@@ -109,6 +109,13 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
         }.to_json
       end
 
+      let(:tweet_with_bad_ticker) do
+        {
+          ticker: "HELLO",
+          body: "This is a test for body."
+        }.to_json
+      end
+
       it "creates a new tweet" do
         expect{ post(:create, body: tweet) }.to change(Tweet, :count).by(1)
       end
@@ -122,6 +129,20 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
         expect(returned_json).to be_a(Hash)
         expect(returned_json["tweets"][0]["ticker"]).to eq("TSLA")
         expect(returned_json["tweets"][0]["body"]).to eq("This is a test for body.")
+      end
+
+      it "does not create a new tweet" do
+        expect{ post(:create, body: tweet_with_bad_ticker) }.to change(Tweet, :count).by(0)
+      end
+
+      it "returns a json without tweets" do
+        post(:create, body: tweet_with_bad_ticker)
+        returned_json = JSON.parse(response.body)
+
+        expect(response.status).to eq(200)
+
+        expect(returned_json).to be_a(Hash)
+        expect(returned_json["tweets"]).to eq([])
       end
     end
   end
