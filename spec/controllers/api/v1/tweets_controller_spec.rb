@@ -95,6 +95,37 @@ RSpec.describe Api::V1::TweetsController, type: :controller do
     end
   end
 
+  describe "POST #create" do
+    context "user successfully creates post" do
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+      end
+
+      let(:tweet) do
+        {
+          ticker: "TSLA",
+          body: "This is a test for body."
+        }.to_json
+      end
+
+      it "creates a new tweet" do
+        expect{ post(:create, body: tweet) }.to change(Tweet, :count).by(1)
+      end
+
+      it "returns a json with newly created tweet" do
+        post(:create, body: tweet)
+        returned_json = JSON.parse(response.body)
+
+        expect(response.status).to eq(200)
+
+        expect(returned_json).to be_a(Hash)
+        expect(returned_json["tweets"][0]["ticker"]).to eq("TSLA")
+        expect(returned_json["tweets"][0]["body"]).to eq("This is a test for body.")
+      end
+    end
+  end
+
   describe "DELETE #destroy" do
     context "user successfully deletes own post" do
       before(:each) do
