@@ -61,12 +61,14 @@ class TweetsIndexContainer extends React.Component {
   render() {
     let tweets = this.state.tweets.map((tweet) => {
       let reviews = tweet.reviews.map((review) => {
+        debugger;
         return(
           <div className="row">
             <ReviewTile
               id={review.id}
               key={review.id}
               comment={review.comment}
+              username={review.user.username}
             />
           </div>
         );

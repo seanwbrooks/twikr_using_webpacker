@@ -8,8 +8,8 @@ Rails.application.routes.draw do
         collection do
           get 'search'
         end
+        resources :reviews, only: [:index]
       end
-      resources :reviews, only: [:index]
     end
   end
 end
