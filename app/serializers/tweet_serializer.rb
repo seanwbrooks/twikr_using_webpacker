@@ -8,6 +8,7 @@ class TweetSerializer < ActiveModel::Serializer
     customized_reviews = []
     object.reviews.each do |review|
       custom_review_object = {
+        id: review.id,
         comment: review.comment,
         username: review.user.username
       }

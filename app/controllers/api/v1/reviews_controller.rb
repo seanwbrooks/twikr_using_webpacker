@@ -6,4 +6,8 @@ class Api::V1::ReviewsController < ApplicationController
     @tweet_reviews = @tweet.reviews
     render json: @tweet_reviews.reverse, adapter: :json
   end
+
+  def create
+    binding.pry
+  end
 end

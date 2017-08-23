@@ -10,7 +10,7 @@ class TweetTileContainer extends React.Component {
       id: null,
       comment: ""
     }
-    this.handleDelete = this.handleDelete.bind(this);
+    this.deleteTweet = this.deleteTweet.bind(this);
   };
 
   componentDidMount() {
@@ -24,8 +24,8 @@ class TweetTileContainer extends React.Component {
     this.setState({ id: this.props.id })
   };
 
-  handleDelete() {
-    this.props.handleDelete(this.state.id);
+  deleteTweet() {
+    this.props.deleteTweet(this.state.id);
   }
 
   render() {
@@ -37,7 +37,7 @@ class TweetTileContainer extends React.Component {
             <strong>@{this.props.username}</strong>
           </div>
           <div className="small-1 columns">
-            <i className="fa fa-times" onClick={this.handleDelete} aria-hidden="true"></i>
+            <i className="fa fa-times" onClick={this.deleteTweet} aria-hidden="true"></i>
           </div>
         </div>
         <div className="row">

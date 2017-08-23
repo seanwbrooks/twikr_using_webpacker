@@ -16,7 +16,7 @@ class ReviewFormContainer extends React.Component {
     let formPayload = {
       comment: this.state.comment
     };
-    this.props.handleReview(formPayload);
+    this.props.reviewSubmit(formPayload);
     this.handleReviewClear(event);
   }
 

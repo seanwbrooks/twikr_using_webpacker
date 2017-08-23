@@ -4,17 +4,18 @@ import TweetFormContainer from './TweetFormContainer';
 import TweetSearchContainer from './TweetSearchContainer';
 import TweetTileContainer from './TweetTileContainer';
 import ReviewTile from '../components/ReviewTile';
+import ReviewFormContainer from './ReviewFormContainer';
 
 class TweetsIndexContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: [],
-      comment: ""
+      tweets: []
     }
     this.addNewTweet = this.addNewTweet.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+    this.deleteTweet = this.deleteTweet.bind(this);
+    this.reviewSubmit = this.reviewSubmit.bind(this);
   }
   componentDidMount() {
     fetch('/api/v1/tweets')
@@ -47,10 +48,22 @@ class TweetsIndexContainer extends React.Component {
     });
   }
 
-  handleDelete(id){
+  deleteTweet(id){
     fetch(`/api/v1/tweets/${id}`, {
       method: 'DELETE',
       credentials: 'same-origin'
+    })
+    .then((response) => response.json())
+    .then((body) => {
+      this.setState({ tweets: body.tweets })
+    })
+  }
+
+  reviewSubmit(formPayload, id){
+    fetch(`/api/v1/tweet/${id}/reviews/new`, {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: JSON.stringify(formPayload)
     })
     .then((response) => response.json())
     .then((body) => {
@@ -62,50 +75,37 @@ class TweetsIndexContainer extends React.Component {
     let tweets = this.state.tweets.map((tweet) => {
       let reviews = tweet.reviews.map((review) => {
         return(
-            <ReviewTile
-              id={review.id}
-              key={review.id}
-              comment={review.comment}
-              username={review.username}
-            />
+          <ReviewTile
+            id={review.id}
+            key={review.id}
+            comment={review.comment}
+            username={review.username}
+          />
         );
       });
 
       return(
         <div key={tweet.id} className="panel">
           <div className="row">
-            <div className="row">
-              <TweetTileContainer
-                id={tweet.id}
-                key={tweet.id}
-                username={tweet.user.username}
-                ticker={tweet.ticker}
-                ask={tweet.ask}
-                percent_change={tweet.percent_change}
-                market_capitalization={tweet.market_capitalization}
-                rating={tweet.rating}
-                body={tweet.body}
-                date={tweet.created_at}
-                handleDelete={this.handleDelete}
-              />
-            </div>
-            {reviews}
+            <TweetTileContainer
+              id={tweet.id}
+              key={tweet.id}
+              username={tweet.user.username}
+              ticker={tweet.ticker}
+              ask={tweet.ask}
+              percent_change={tweet.percent_change}
+              market_capitalization={tweet.market_capitalization}
+              rating={tweet.rating}
+              body={tweet.body}
+              date={tweet.created_at}
+              deleteTweet={this.deleteTweet}
+            />
           </div>
+          {reviews}
           <div className="row">
-            <form className="comment-form" onSubmit={this.handleCommentSubmit}>
-              <div className="row">
-                <div className="large-12 columns">
-                  <div className="row collapse">
-                    <div className="small-11 columns">
-                      <input type="text" content={this.state.search} onChange={this.handleSearchChange} placeholder="Comment" />
-                    </div>
-                    <div className="small-1 columns">
-                      <input type="submit" value="POST" className="button postfix" onClick={this.handleSearchSubmit}/>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
+            <ReviewFormContainer
+              reviewSubmit={this.reviewSubmit}
+            />
           </div>
         </div>
       );
