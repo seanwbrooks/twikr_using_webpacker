@@ -1,10 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 const ReviewTile = (props) => {
   return(
-    <div className="row">
-      <div className="small-12 columns">{props.comment}</div>
+    <div className="review-panel">
+      <div className="row">
+        <div className="small-12 columns">@{props.username}</div>
+      </div>
+      <div className="row review">
+        <div className="small-12 columns">{props.comment}</div>
+      </div>
     </div>
   );
 }

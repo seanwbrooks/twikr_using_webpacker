@@ -62,13 +62,12 @@ class TweetsIndexContainer extends React.Component {
     let tweets = this.state.tweets.map((tweet) => {
       let reviews = tweet.reviews.map((review) => {
         return(
-          <div className="row">
             <ReviewTile
               id={review.id}
               key={review.id}
               comment={review.comment}
+              username={review.username}
             />
-          </div>
         );
       });
 
@@ -90,11 +89,7 @@ class TweetsIndexContainer extends React.Component {
                 handleDelete={this.handleDelete}
               />
             </div>
-            <div className="reviews">
-              <div className="row">
-                {reviews}
-              </div>
-            </div>
+            {reviews}
           </div>
           <div className="row">
             <form className="comment-form" onSubmit={this.handleCommentSubmit}>
