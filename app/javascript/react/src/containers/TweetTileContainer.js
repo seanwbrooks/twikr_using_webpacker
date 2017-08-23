@@ -33,14 +33,21 @@ class TweetTileContainer extends React.Component {
       <div className="row">
         <div className="row">
           <div className="small-1 columns"></div>
+          <div className="small-10 columns tweet-name">
+            <strong>@{this.props.username}</strong>
+          </div>
+          <div className="small-1 columns">
+            <i className="fa fa-times" onClick={this.handleDelete} aria-hidden="true"></i>
+          </div>
+        </div>
+        <div className="row">
+          <div className="small-1 columns"></div>
           <div className="small-2 columns text-center"><strong>Ticker</strong></div>
           <div className="small-2 columns text-center"><strong>Ask</strong></div>
           <div className="small-2 columns text-center"><strong>Daily Change (%)</strong></div>
           <div className="small-2 columns text-center"><strong>Market Cap</strong></div>
           <div className="small-2 columns text-center"><strong>Growth Indicator</strong></div>
-          <div className="small-1 columns">
-            <i className="fa fa-times" onClick={this.handleDelete} aria-hidden="true"></i>
-          </div>
+          <div className="small-1 columns text-center"></div>
         </div>
         <div className="row">
           <div className="small-1 columns"></div>
@@ -50,11 +57,6 @@ class TweetTileContainer extends React.Component {
           <div className="small-2 columns text-center">{this.props.market_capitalization}</div>
           <div className="small-2 columns text-center"><i className={this.state.rating} aria-hidden="true"></i></div>
           <div className="small-1 columns text-center"></div>
-        </div>
-        <div className="row">
-          <div className="tweet-user">
-            What <strong>@{this.props.username}</strong> is thinking...
-          </div>
         </div>
         <div className="row">
           <div className="tweet-body">

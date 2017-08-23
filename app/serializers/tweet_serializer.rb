@@ -1,6 +1,18 @@
 class TweetSerializer < ActiveModel::Serializer
-  has_many :reviews
   belongs_to :user
+  has_many :reviews
 
   attributes :id, :ticker, :ask, :percent_change, :market_capitalization, :rating, :body, :user_id, :created_at, :updated_at
+
+  def reviews
+    customized_reviews = []
+    object.reviews.each do |review|
+      custom_review_object = {
+        comment: review.comment,
+        username: review.user.username
+      }
+      customized_reviews.unshift(custom_review_object)
+    end
+    return customized_reviews
+  end
 end
