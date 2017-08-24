@@ -13,7 +13,7 @@ class ReviewFormContainer extends React.Component {
 
   handleReviewSubmit(event){
     event.preventDefault();
-    let formPayload = {
+    let reviewPayload = {
       tweet_id: this.props.tweetId,
       comment: this.state.comment
     };
@@ -35,7 +35,7 @@ class ReviewFormContainer extends React.Component {
   render() {
     return(
       <form className="comment-form" onSubmit={this.handleReviewSubmit}>
-        <div className="row">
+        <div className="row collapse">
           <div className="small-11 columns">
             <input type="text" content={this.state.comment} onChange={this.handleReviewChange} />
           </div>

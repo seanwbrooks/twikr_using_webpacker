@@ -59,11 +59,11 @@ class TweetsIndexContainer extends React.Component {
     })
   }
 
-  reviewSubmit(formPayload){
+  reviewSubmit(reviewPayload){
     fetch(`/api/v1/reviews`, {
       method: 'POST',
       credentials: 'same-origin',
-      body: JSON.stringify(formPayload)
+      body: JSON.stringify(reviewPayload)
     })
     .then((response) => response.json())
     .then((body) => {
