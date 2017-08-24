@@ -12,16 +12,16 @@ class TweetSearchContainer extends React.Component {
   }
 
   handleSearchChange(event) {
-    let value = event.target.value;
-    this.setState({ search: value })
+    let searchValue = event.target.value;
+    this.setState({ search: searchValue })
   }
 
   handleSearchSubmit(event) {
     event.preventDefault();
-    let formPayload = {
+    let searchPayload = {
       search: this.state.search
     };
-    this.props.handleSearch(formPayload);
+    this.props.handleSearch(searchPayload);
     this.handleClearSubmit(event);
   }
 

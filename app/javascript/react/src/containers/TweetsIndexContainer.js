@@ -25,8 +25,8 @@ class TweetsIndexContainer extends React.Component {
     });
   }
 
-  handleSearch(formPayload) {
-    let query = '?stock=' + encodeURIComponent(formPayload.search);
+  handleSearch(payload) {
+    let query = '?stock=' + encodeURIComponent(payload.search);
     fetch('/api/v1/tweets/search' + query, {
       credentials: 'same-origin'
     })
