@@ -20,7 +20,6 @@ class TweetShowContainer extends React.Component {
   }
 
   render() {
-    debugger;
     let reviews = this.state.reviews.map((review) => {
       return(
         <ReviewTile

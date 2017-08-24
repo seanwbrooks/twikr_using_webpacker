@@ -12,7 +12,7 @@ class TweetSerializer < ActiveModel::Serializer
         comment: review.comment,
         username: review.user.username
       }
-      customized_reviews.unshift(custom_review_object)
+      customized_reviews.push(custom_review_object)
     end
     return customized_reviews
   end

@@ -59,8 +59,8 @@ class TweetsIndexContainer extends React.Component {
     })
   }
 
-  reviewSubmit(formPayload, id){
-    fetch(`/api/v1/tweet/${id}/reviews/new`, {
+  reviewSubmit(formPayload){
+    fetch(`/api/v1/reviews`, {
       method: 'POST',
       credentials: 'same-origin',
       body: JSON.stringify(formPayload)
@@ -102,11 +102,10 @@ class TweetsIndexContainer extends React.Component {
             />
           </div>
           {reviews}
-          <div className="row">
-            <ReviewFormContainer
-              reviewSubmit={this.reviewSubmit}
-            />
-          </div>
+          <ReviewFormContainer
+            tweetId={tweet.id}
+            reviewSubmit={this.reviewSubmit}
+          />
         </div>
       );
     });
