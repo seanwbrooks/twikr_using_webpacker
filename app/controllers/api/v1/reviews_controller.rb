@@ -4,6 +4,13 @@ class Api::V1::ReviewsController < ApplicationController
   def index
     @tweet = Tweet.find(params[:tweet_id])
     @tweet_reviews = @tweet.reviews
-    render json: @tweet_reviews.reverse, adapter: :json
+    render json: @tweet_reviews, adapter: :json
+  end
+
+  def create
+    data = JSON.parse(request.body.read)
+    @new_review = Review.create(tweet_id: data["tweet_id"], user_id: current_user.id, comment: data["comment"])
+    @tweets = Tweet.order(updated_at: :desc).limit(20)
+    render json: @tweets, adapter: :json
   end
 end

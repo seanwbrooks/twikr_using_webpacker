@@ -13,10 +13,12 @@ class ReviewFormContainer extends React.Component {
 
   handleReviewSubmit(event){
     event.preventDefault();
-    let formPayload = {
+    let reviewPayload = {
+      tweet_id: this.props.tweetId,
       comment: this.state.comment
     };
-    this.props.handleReview(formPayload);
+
+    this.props.reviewSubmit(reviewPayload);
     this.handleReviewClear(event);
   }
 
@@ -33,12 +35,12 @@ class ReviewFormContainer extends React.Component {
   render() {
     return(
       <form className="comment-form" onSubmit={this.handleReviewSubmit}>
-        <div className="row">
+        <div className="row collapse">
           <div className="small-11 columns">
-            <input type="text" content={this.state.comment} onChange={this.handleReviewChange} placeholder="Comment" />
+            <input type="text" placeholder="Write a comment..." value={this.state.comment} onChange={this.handleReviewChange} />
           </div>
           <div className="small-1 columns">
-            <input type="submit" value="POST" className="button postfix" onClick={this.handleReviewSubmit}/>
+            <input type="submit" value="Post" className="button postfix" onClick={this.handleReviewSubmit}/>
           </div>
         </div>
       </form>
