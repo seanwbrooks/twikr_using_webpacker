@@ -47,7 +47,7 @@ class TweetSearchContainer extends React.Component {
         </div>
       </form>
     );
-  };
+  }
 }
 
 export default TweetSearchContainer;
