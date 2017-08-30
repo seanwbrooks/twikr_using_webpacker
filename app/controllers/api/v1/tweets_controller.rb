@@ -25,33 +25,32 @@ class Api::V1::TweetsController < ApplicationController
   def create
     data = JSON.parse(request.body.read)
     @stock = StockQuote::Stock.json_quote(data["ticker"])
-    @pegratio = @stock["quote"]["PEGRatio"].to_f
-    @ask = @stock["quote"]["Ask"].to_f
-    @fiftyday = @stock["quote"]["FiftydayMovingAverage"].to_f
-    @buy = ((0.7) * @pegratio + (0.3) * (@ask - @fiftyday))
-    @position = "-"
-    if @buy < 0
-      @position = "High"
-    elsif @buy < 0.5
+    if @stock.class == StockQuote::NoDataForStockError || @stock["quote"]["symbol"] == nil || @stock["quote"]["Ask"] == nil || @stock["quote"]["PEGRatio"] == nil || @stock["quote"]["FiftydayMovingAverage"] == nil || @stock["quote"]["PercentChange"] == nil
+      @tweets_without_new_tweet = Tweet.order(updated_at: :desc).limit(20)
+      return render json: @tweets_without_new_tweet, adapter: :json
+    else
+      @pegratio = @stock["quote"]["PEGRatio"].to_f
+      @ask = @stock["quote"]["Ask"].to_f
+      @fiftyday = @stock["quote"]["FiftydayMovingAverage"].to_f
+      @buy = ((0.7) * @pegratio + (0.3) * (@ask - @fiftyday))
       @position = "-"
-    else
-      @postion = "Low"
-    end
-    @new_tweet = Tweet.new(
-      ticker: @stock["quote"]["symbol"],
-      ask: @stock["quote"]["Ask"],
-      percent_change: @stock["quote"]["PercentChange"],
-      market_capitalization: @stock["quote"]["MarketCapitalization"],
-      rating: @position,
-      body: data["body"],
-      user_id: current_user.id)
-    if @new_tweet.ticker == nil || @new_tweet.ask == nil || @new_tweet.percent_change == nil
-      @tweets_without_post = Tweet.order(updated_at: :desc).limit(20)
-      return render json: @tweets_without_post, adapter: :json
-    else
-      @new_tweet.save
-      @tweets = Tweet.order(updated_at: :desc).limit(20)
-      return render json: @tweets, adapter: :json
+      if @buy < 0
+        @position = "High"
+      elsif @buy < 0.5
+        @position = "-"
+      else
+        @postion = "Low"
+      end
+      @new_tweet = Tweet.create(
+        ticker: @stock["quote"]["symbol"],
+        ask: @stock["quote"]["Ask"],
+        percent_change: @stock["quote"]["PercentChange"],
+        market_capitalization: @stock["quote"]["MarketCapitalization"],
+        rating: @position,
+        body: data["body"],
+        user_id: current_user.id)
+      @tweets_with_new_tweet = Tweet.order(updated_at: :desc).limit(20)
+      return render json: @tweets_with_new_tweet, adapter: :json
     end
   end
 
