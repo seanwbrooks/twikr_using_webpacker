@@ -25,6 +25,7 @@ class Api::V1::TweetsController < ApplicationController
   def create
     data = JSON.parse(request.body.read)
     @stock = StockQuote::Stock.json_quote(data["ticker"])
+    binding.pry
     @pegratio = @stock["quote"]["PEGRatio"].to_f
     @ask = @stock["quote"]["Ask"].to_f
     @fiftyday = @stock["quote"]["FiftydayMovingAverage"].to_f
