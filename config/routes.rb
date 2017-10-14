@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
+  get '/stocks' => 'stocks#stock'
 
   namespace :api do
     namespace :v1 do

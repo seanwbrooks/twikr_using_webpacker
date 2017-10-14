@@ -273,6 +273,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   mini_magick
+  nokogiri
   pg (~> 0.18)
   pry-rails
   puma (~> 3.7)
@@ -295,4 +296,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.15.3
+   1.15.4
