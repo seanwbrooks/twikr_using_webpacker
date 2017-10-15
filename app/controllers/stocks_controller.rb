@@ -1,35 +1,37 @@
 class StocksController < ApplicationController
-  def trending_tickers
-    @tickers = []
-
+  def scrape(url)
     require 'openssl'
-    doc = Nokogiri::HTML(open('https://finance.yahoo.com/trending-tickers',
+    doc = Nokogiri::HTML(open("#{url}",
     :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
-    @yahoo_trending_tickers = doc.css('td').css('a')
-
-    @yahoo_trending_tickers.map do |a|
-      @symbol = a.text
-      if (@symbol != "")
-        @tickers.push(@symbol)
-      end
-    end
-    @tickers
   end
 
-  def web_scrap_trending_tickers
-    @tickers = trending_tickers
+  def trending_tickers
+    tickers = []
+    url = 'https://finance.yahoo.com/trending-tickers'
+    regex = /[A-Z]+/
 
-    @tickers.each do |ticker|
-      @ticker_container = []
+    yahoo_trending_tickers = scrape(url).css('td').css('a')
 
-      require 'openssl'
-      doc = Nokogiri::HTML(open("https://finance.yahoo.com/quote/#{ticker}?p=#{ticker}",
-       :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
-      data = doc.css('td')
+    yahoo_trending_tickers.map do |a|
+      symbol = a.text
+      if (symbol != "" && regex.match(symbol)[0] == symbol)
+        tickers.push(symbol)
+      end
+    end
+    tickers
+  end
+
+  def ticker_data
+    tickers = trending_tickers
+
+    tickers.each do |ticker|
+      ticker_container = []
+
+      data = scrape("https://finance.yahoo.com/quote/#{ticker}?p=#{ticker}").css('td')
 
       data.map do |data_points|
-        @data_points = data_points.text
-        @ticker_container.push(@data_points)
+        data_points = data_points.text
+        ticker_container.push(data_points)
       end
       binding.pry
     end

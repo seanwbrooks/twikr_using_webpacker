@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
-  get '/stocks' => 'stocks#web_scrap_trending_tickers'
+  get '/stocks' => 'stocks#ticker_data'
 
   namespace :api do
     namespace :v1 do
