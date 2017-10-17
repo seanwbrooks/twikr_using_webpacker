@@ -33,11 +33,8 @@ class StocksController < ApplicationController
         data_points = data_points.text
         ticker_container.push(data_points)
       end
+
       binding.pry
     end
-  end
-
-  def create
-
   end
 end
