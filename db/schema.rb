@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20171007122715) do
     t.bigint "user_id"
     t.bigint "tweet_id"
     t.string "symbol", null: false
-    t.string "ask", null: false
+    t.string "ask"
     t.string "average_daily_volume"
     t.string "change_percent_change"
     t.string "change"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20171007122715) do
     t.string "dividend_yield"
     t.string "high"
     t.string "low"
+    t.string "beta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tweet_id"], name: "index_stocks_on_tweet_id"

@@ -5,7 +5,7 @@ class CreateStocks < ActiveRecord::Migration[5.1]
       t.belongs_to :tweet
 
       t.string :symbol, null: false
-      t.string :ask, null: false
+      t.string :ask
       t.string :average_daily_volume
       t.string :change_percent_change
       t.string :change
@@ -48,6 +48,7 @@ class CreateStocks < ActiveRecord::Migration[5.1]
       t.string :dividend_yield
       t.string :high
       t.string :low
+      t.string :beta
 
       t.timestamps
     end
