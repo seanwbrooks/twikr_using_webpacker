@@ -35,7 +35,7 @@ class StocksController < ApplicationController
       end
 
       @trending_ticker_instance = Stock.new(ticker, ticker_container)
-      binding.pry
+
       if @trending_ticker_instance.validate
         @trending_ticker_instance.save
       end
