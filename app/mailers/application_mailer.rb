@@ -1,3 +1,3 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "\"TWIKR\" <#{Users.email}>"
+  default from: "TWIKR <twikrsupport@gmail.com>"
 end

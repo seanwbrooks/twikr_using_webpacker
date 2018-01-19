@@ -9,8 +9,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   def create
     @data = JSON.parse(request.body.read)
-    @new_review = Review.new(tweet_id: @data["tweet_id"], user_id: current_user.id, comment: @data["comment"])
-
+    @new_review = Review.create(tweet_id: @data["tweet_id"], user_id: current_user.id, comment: @data["comment"])
     if @new_review.save
       ReviewMailer.new_review(@new_review).deliver_later
     end
