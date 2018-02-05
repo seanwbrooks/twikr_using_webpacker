@@ -9,7 +9,7 @@ Rails.application.routes.draw do
           get 'search'
         end
       end
-      resources :reviews, only: [:index, :new, :create]
+      resources :reviews, only: [:index, :new, :create, :destroy]
     end
   end
 end
