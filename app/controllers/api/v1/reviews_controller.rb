@@ -13,4 +13,24 @@ class Api::V1::ReviewsController < ApplicationController
     @tweets = Tweet.order(updated_at: :desc).limit(20)
     render json: @tweets, adapter: :json
   end
+
+  def destroy
+    @review = Review.find(params[:id])
+    if user_review?(@review)
+      @review.destroy
+    end
+    @tweets = Tweet.order(updated_at: :desc).limit(20)
+    render json: @tweets, adapter: :json
+  end
+
+  private
+
+  def user_review?(review)
+    check = false
+    @review = Review.find(params[:id])
+    if @review.user == current_user
+      check = true
+    end
+    check
+  end
 end
