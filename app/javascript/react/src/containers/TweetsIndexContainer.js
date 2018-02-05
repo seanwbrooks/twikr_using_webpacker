@@ -16,6 +16,7 @@ class TweetsIndexContainer extends React.Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.deleteTweet = this.deleteTweet.bind(this);
     this.reviewSubmit = this.reviewSubmit.bind(this);
+    this.deleteReview = this.deleteReview.bind(this);
   }
   componentDidMount() {
     fetch('/api/v1/tweets')
@@ -71,6 +72,17 @@ class TweetsIndexContainer extends React.Component {
     })
   }
 
+  deleteReview(review){
+    fetch(`/api/v1/reviews/${review.target.dataset.id}`, {
+      method: 'DELETE',
+      credentials: 'same-origin'
+    })
+    .then((response) => response.json())
+    .then((body) => {
+      this.setState({ tweets: body.tweets })
+    })
+  }
+
   render() {
     let tweets = this.state.tweets.map((tweet) => {
       let reviews = tweet.reviews.map((review) => {
@@ -80,6 +92,7 @@ class TweetsIndexContainer extends React.Component {
             key={review.id}
             comment={review.comment}
             username={review.username}
+            deleteReview={this.deleteReview}
           />
         );
       });
