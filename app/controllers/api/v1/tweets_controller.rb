@@ -4,6 +4,8 @@ class Api::V1::TweetsController < ApplicationController
 
   def index
     @tweets = Tweet.order(updated_at: :desc).limit(20)
+    @current_user = current_user
+    binding.pry
     render json: @tweets, adapter: :json
   end
 
