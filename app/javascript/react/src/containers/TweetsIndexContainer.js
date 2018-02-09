@@ -10,7 +10,8 @@ class TweetsIndexContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: []
+      tweets: [],
+      current_user: ''
     }
     this.addNewTweet = this.addNewTweet.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -19,6 +20,13 @@ class TweetsIndexContainer extends React.Component {
     this.deleteReview = this.deleteReview.bind(this);
   }
   componentDidMount() {
+    // Working on getting devise user that signed in to React setState
+    // Please see https://stories.abletech.nz/hi-im-kate-8b6420124041
+    fetch('/users/sign_in')
+    .then((response) => response.json())
+    .then((body) => {
+      this.setState({ current_user: body })
+    });
     fetch('/api/v1/tweets')
     .then((response) => response.json())
     .then((body) => {
