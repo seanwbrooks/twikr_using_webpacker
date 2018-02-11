@@ -20,7 +20,11 @@ class TweetsIndexContainer extends React.Component {
     this.deleteReview = this.deleteReview.bind(this);
   }
   componentDidMount() {
-    fetch('/api/v1/tweets')
+    fetch('/api/v1/tweets', {
+      credentials: 'same-origin',
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
     .then((response) => response.json())
     .then((body) => {
       this.setState({ tweets: body.tweets })

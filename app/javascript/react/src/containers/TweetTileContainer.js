@@ -8,7 +8,8 @@ class TweetTileContainer extends React.Component {
     this.state = {
       rating: null,
       id: null,
-      comment: ""
+      comment: "",
+      hideDelete: "hide"
     }
     this.deleteTweet = this.deleteTweet.bind(this);
   };
@@ -22,6 +23,10 @@ class TweetTileContainer extends React.Component {
       this.setState({ rating: "fa fa-arrow-down red"});
     };
     this.setState({ id: this.props.id })
+    // Give user ability to delete if she is current user
+    if (this.props.current_username == this.props.username) {
+      this.setState({ hideDelete: "" });
+    }
   };
 
   deleteTweet() {
@@ -37,7 +42,7 @@ class TweetTileContainer extends React.Component {
             <strong>@{this.props.username}</strong>
           </div>
           <div className="small-1 columns">
-            <i className="fa fa-times" onClick={this.deleteTweet} aria-hidden="true"></i>
+            <i className={"fa fa-times" + this.hideDelete} onClick={this.deleteTweet} aria-hidden="true"></i>
           </div>
         </div>
         <div className="row">

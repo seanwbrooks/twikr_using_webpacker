@@ -16,4 +16,5 @@ class TweetSerializer < ActiveModel::Serializer
     end
     return customized_reviews
   end
+
 end
