@@ -42,7 +42,7 @@ class TweetTileContainer extends React.Component {
             <strong>@{this.props.username}</strong>
           </div>
           <div className="small-1 columns">
-            <i className={"fa fa-times" + this.hideDelete} onClick={this.deleteTweet} aria-hidden="true"></i>
+            <i className={"fa fa-times" + this.state.hideDelete} onClick={this.deleteTweet} aria-hidden="true"></i>
           </div>
         </div>
         <div className="row">

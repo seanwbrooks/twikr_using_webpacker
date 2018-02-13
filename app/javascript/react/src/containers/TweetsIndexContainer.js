@@ -27,7 +27,7 @@ class TweetsIndexContainer extends React.Component {
     })
     .then((response) => response.json())
     .then((body) => {
-      this.setState({ tweets: body.tweets })
+      this.setState({ tweets: body.tweets, current_user: body.meta.current_user })
     });
   }
 
@@ -96,6 +96,7 @@ class TweetsIndexContainer extends React.Component {
             id={review.id}
             key={review.id}
             comment={review.comment}
+            hideDelete={(review.username == this.state.current_user.username)}
             username={review.username}
             deleteReview={this.deleteReview}
           />
@@ -116,6 +117,7 @@ class TweetsIndexContainer extends React.Component {
               rating={tweet.rating}
               body={tweet.body}
               date={tweet.created_at}
+              current_username={this.state.current_user.username}
               deleteTweet={this.deleteTweet}
             />
           </div>
