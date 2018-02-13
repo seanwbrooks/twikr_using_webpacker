@@ -4,7 +4,8 @@ class Api::V1::TweetsController < ApplicationController
 
   def index
     @tweets = Tweet.order(updated_at: :desc).limit(20)
-    render json: @tweets, adapter: :json
+    @current_user = current_user
+    render json: @tweets, adapter: :json, meta: { 'current_user': @current_user }
   end
 
   def search
