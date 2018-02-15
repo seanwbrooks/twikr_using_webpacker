@@ -117,7 +117,7 @@ class TweetsIndexContainer extends React.Component {
               rating={tweet.rating}
               body={tweet.body}
               date={tweet.created_at}
-              current_username={this.state.current_user.username}
+              hideDelete={(this.state.current_user.username == tweet.user.username) ? '' : 'hide'}
               deleteTweet={this.deleteTweet}
             />
           </div>
