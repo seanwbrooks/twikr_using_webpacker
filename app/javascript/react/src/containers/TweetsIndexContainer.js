@@ -10,7 +10,8 @@ class TweetsIndexContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: []
+      tweets: [],
+      current_user: ''
     }
     this.addNewTweet = this.addNewTweet.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -19,10 +20,14 @@ class TweetsIndexContainer extends React.Component {
     this.deleteReview = this.deleteReview.bind(this);
   }
   componentDidMount() {
-    fetch('/api/v1/tweets')
+    fetch('/api/v1/tweets', {
+      credentials: 'same-origin',
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
     .then((response) => response.json())
     .then((body) => {
-      this.setState({ tweets: body.tweets })
+      this.setState({ tweets: body.tweets, current_user: body.meta.current_user })
     });
   }
 
@@ -91,6 +96,7 @@ class TweetsIndexContainer extends React.Component {
             id={review.id}
             key={review.id}
             comment={review.comment}
+            hideDelete={(review.username == this.state.current_user.username) ? '' : 'hide'}
             username={review.username}
             deleteReview={this.deleteReview}
           />
@@ -111,6 +117,7 @@ class TweetsIndexContainer extends React.Component {
               rating={tweet.rating}
               body={tweet.body}
               date={tweet.created_at}
+              hideDelete={(this.state.current_user.username == tweet.user.username) ? '' : 'hide'}
               deleteTweet={this.deleteTweet}
             />
           </div>
