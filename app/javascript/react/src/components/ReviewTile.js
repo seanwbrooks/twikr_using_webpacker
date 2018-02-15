@@ -7,7 +7,7 @@ const ReviewTile = (props) => {
         <div className="small-4 columns">@{props.username}</div>
         <div className="small-7 columns"></div>
         <div className="small-1 columns review-close">
-          <i className="fa fa-times" data-id={props.id} onClick={props.deleteReview} aria-hidden="true"></i>
+          <i className={"fa fa-times " + props.hideDelete} data-id={props.id} onClick={props.deleteReview} aria-hidden="true"></i>
         </div>
       </div>
       <div className="row review">

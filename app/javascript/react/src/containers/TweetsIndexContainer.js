@@ -96,7 +96,7 @@ class TweetsIndexContainer extends React.Component {
             id={review.id}
             key={review.id}
             comment={review.comment}
-            hideDelete={(review.username == this.state.current_user.username)}
+            hideDelete={(review.username == this.state.current_user.username) ? '' : 'hide'}
             username={review.username}
             deleteReview={this.deleteReview}
           />
