@@ -72,6 +72,9 @@ class Api::V1::TweetsController < ApplicationController
       end
     rescue StockQuote::NoDataForStockError
       @message = {"message" => "No available data at the moment"}
+      @alpha_vantage = AlphaVantage.new("TIME_SERIES_DAILY", data["ticker"], "YIVXICLVZ4S1NQPD")
+      @alpha_vantage.data
+      binding.pry
     end
     @message
   end
