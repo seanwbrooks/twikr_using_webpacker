@@ -14,6 +14,10 @@ gem 'stock_quote'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'foundation-rails'
+gem "activejob", ">= 5.1.6.1"
+gem "rack", ">= 2.0.6"
+gem "rails-html-sanitizer", ">= 1.0.4"
+gem "loofah", ">= 2.2.3"
 
 group :development do
   gem 'listen', '~> 3.0.5'
