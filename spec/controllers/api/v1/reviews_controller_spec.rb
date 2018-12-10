@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ReviewsController, type: :controller do
   before(:each) do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryBot.create(:user)
     sign_in @user
     @tweet = Tweet.create(ticker: "TSLA", ask: "325.78", percent_change: "3.45%", market_capitalization: "3.0B", rating: "High", body: "This is a test for Tweet body.", user_id: @user.id)
     @review = Review.create(comment: "This is a test for reviews.", tweet_id: @tweet.id, user_id: @user.id)

@@ -50,10 +50,10 @@ class Api::V1::TweetsController < ApplicationController
 
   def handle_quote(data)
     begin
-      @stock = StockQuote::Stock.json_quote(data["ticker"])
-      @pegratio = @stock["quote"]["PEGRatio"].to_f
-      @ask = @stock["quote"]["Ask"].to_f
-      @fiftyday = @stock["quote"]["FiftydayMovingAverage"].to_f
+      @stock = StockQuote::Stock.quote(data["ticker"])
+      @pegratio = @stock["quote"]["PEGRatio"]
+      @ask = @stock["quote"]["Ask"]
+      @fiftyday = @stock["quote"]["FiftydayMovingAverage"]
       @buy_value = ((0.7) * @pegratio + (0.3) * (@ask - @fiftyday))
       @position = prediction(@buy_value)
       if validate_quote(@stock)
@@ -70,8 +70,6 @@ class Api::V1::TweetsController < ApplicationController
       else
         @message = {"message" => "Stock not available at the moment"}
       end
-    rescue StockQuote::NoDataForStockError
-      @message = {"message" => "No available data at the moment"}
     end
     @message
   end
