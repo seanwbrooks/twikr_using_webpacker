@@ -114,6 +114,7 @@ GEM
     jsonapi-renderer (0.2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    libv8 (6.7.288.46.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -129,6 +130,8 @@ GEM
     mini_magick (4.9.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
+    mini_racer (0.2.4)
+      libv8 (>= 6.3)
     minitest (5.11.3)
     multi_json (1.13.1)
     netrc (0.11.0)
@@ -313,6 +316,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   loofah (>= 2.2.3)
   mini_magick
+  mini_racer
   pg (~> 0.18)
   pry-rails
   puma (~> 3.7)

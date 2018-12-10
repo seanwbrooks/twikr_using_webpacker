@@ -22,6 +22,7 @@ gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'rubocop-rspec'
 gem 'stock_quote', '~> 2.0.0'
+gem 'mini_racer'
 
 group :development do
   gem 'listen', '~> 3.0.5'
