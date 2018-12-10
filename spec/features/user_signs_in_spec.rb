@@ -3,7 +3,7 @@ require 'spec_helper'
 
 feature 'user signs in' do
   scenario 'an existing user specifies a valid email and password' do
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
     visit root_path
     click_link 'Sign In'
 
@@ -26,7 +26,7 @@ feature 'user signs in' do
   end
 
   scenario 'an existing email with the wrong password is denied access' do
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
     visit root_path
     click_link 'Sign In'
 
@@ -38,7 +38,7 @@ feature 'user signs in' do
   end
 
   scenario 'an already authenticated user cannot re-sign in' do
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
     visit new_user_session_path
 
     fill_in 'Email', with: user.email

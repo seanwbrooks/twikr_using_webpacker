@@ -16,8 +16,8 @@ end
 
 RSpec.describe 'Tweet' do
   context 'making new tweet' do
-    let(:user) { FactoryGirl.build(:user) }
-    let(:tweet) { FactoryGirl.build(:tweet) }
+    let(:user) { FactoryBot.build(:user) }
+    let(:tweet) { FactoryBot.build(:tweet) }
 
     it 'has a valid inputs' do
       expect(tweet.ticker).to include("TSLA")

@@ -15,9 +15,9 @@ end
 RSpec.describe "Stock" do
   context "create a stock" do
     #initialize models
-    let(:user) { FactoryGirl.build(:user) }
-    let(:tweet) { FactoryGirl.build(:tweet) }
-    let(:stock) { FactoryGirl.build(:stock) }
+    let(:user) { FactoryBot.build(:user) }
+    let(:tweet) { FactoryBot.build(:tweet) }
+    let(:stock) { FactoryBot.build(:stock) }
 
     it "has user association" do
       expect(stock.user_id).to be(1)
