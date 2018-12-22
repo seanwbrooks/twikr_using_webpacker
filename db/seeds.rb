@@ -1,3 +1,5 @@
+ApplicationConfiguration.create(name: "AlphaVantageAPIKey", value: "YIVXICLVZ4S1NQPD")
+
 User.create(first_name: "Sean", last_name: "Brooks", username: "seanwbrooks", email: "swbrooks87@gmail.com", password: "Schwinn1", role: "member")
 User.create(first_name: "Megan", last_name: "Brooks", username: "megannbrooks", email: "mnbrooks89@gmail.com", password: "Schwinn1", role: "member")
 

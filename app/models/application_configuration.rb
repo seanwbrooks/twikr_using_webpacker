@@ -1,0 +1,2 @@
+class ApplicationConfiguration < ApplicationRecord
+end
