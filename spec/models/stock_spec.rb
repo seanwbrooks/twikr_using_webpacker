@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-require 'rails_helper'
-
-describe Stock do
+RSpec.describe Stock, type: :model do
   #validates associations
   it { should belong_to :tweet }
   it { should belong_to :user }
